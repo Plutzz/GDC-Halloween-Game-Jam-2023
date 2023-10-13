@@ -34,7 +34,6 @@ public class GridBuildingSystem : MonoBehaviour
     public TileBase redTile;
     public TileBase greenTile;
     public TileBase whiteTile;
-    public TileBase yellowTile;
 
 
     [Header("TEMP VARIBLES")]
@@ -64,7 +63,6 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.white, whiteTile);
         tileBases.Add(TileType.green, greenTile);
         tileBases.Add(TileType.red, redTile);
-        tileBases.Add(TileType.yellow, yellowTile);
     }
 
     private void Update()
