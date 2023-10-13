@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Red Tile
+  m_Name: Square 1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: 9df36ee6dd5c70d4f9ef94b1c1ccfde9, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.6156863}
+  m_Sprite: {fileID: 7482667652216324306, guid: 1d0988963b2c1e242b65b7124f1e7d73, type: 3}
+  m_Color: {r: 0.54509807, g: 0.6653866, b: 0.7058824, a: 1}
   m_Transform:
     e00: 1
     e01: 0
