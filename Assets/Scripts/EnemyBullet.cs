@@ -18,7 +18,7 @@ public class EnemyBullet : MonoBehaviour
 
         Vector3 spread = new Vector3(Random.Range(-bulletSpread, bulletSpread), Random.Range(-bulletSpread, bulletSpread), 0);
 
-        Vector3 direction = (player.transform.position + spread) - transform.position;
+        Vector3 direction = player.transform.position + spread - transform.position;
 
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
 
