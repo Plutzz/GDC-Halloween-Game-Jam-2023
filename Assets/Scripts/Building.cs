@@ -7,7 +7,6 @@ public class Building : MonoBehaviour
 {
     public bool placed;
     public BoundsInt area;
-    public string type;                     // List of types: "building", "path" (changes what color of tile occupies the building square)
 
     void Start()
     {
@@ -45,7 +44,7 @@ public class Building : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         placed = true;
-        GridBuildingSystem.current.takeArea(areaTemp, type);
+        GridBuildingSystem.current.takeArea(areaTemp);
     }
 
     public void setSprite()

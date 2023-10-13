@@ -38,11 +38,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     [Header("TEMP VARIBLES")]
 
-    public GameObject AutoShop;
-    public GameObject Castle;
-    public GameObject Storage;
-    public GameObject PathPrefab;
-    public GameObject player;
+    public GameObject Tower1;
 
 
 
@@ -72,22 +68,7 @@ public class GridBuildingSystem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                initializeWithBuilding(AutoShop);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                initializeWithBuilding(Castle);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                initializeWithBuilding(Storage);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                initializeWithBuilding(PathPrefab);
+                initializeWithBuilding(Tower1);
             }
 
 
@@ -267,25 +248,7 @@ public class GridBuildingSystem : MonoBehaviour
         return true;
     }
 
-    public List<bool> checkAdjacent(Vector3Int position, out int numAdjacent)
-    {
-        TileBase[] baseArray = getTilesBlockPath(position, mainTilemap);
-        List<bool> directions = new List<bool>();
-        numAdjacent = 0;                                                                      // Direction Key:
-        foreach (var b in baseArray)                                                          // 1st element: up right
-        {                                                                                     // 2nd element: up left
-            if (b == tileBases[TileType.yellow])                                               // 3rd element: down left
-            {                                                                                 // 4th element: down right
-                directions.Add(true);
-                numAdjacent++;
-            }
-            else
-                directions.Add(false);
-        }
-        return directions;                                  // If the element in coordinates is true, that tile is yellow (occupied by a path)
-    }
-
-    public void takeArea(BoundsInt area, string type)
+    public void takeArea(BoundsInt area)
     {
        setTilesBlock(area, TileType.empty, tempTilemap);
        setTilesBlock(area, TileType.green, mainTilemap);
@@ -326,6 +289,5 @@ public class GridBuildingSystem : MonoBehaviour
         white,
         green,
         red,
-        yellow,
     }
 }
