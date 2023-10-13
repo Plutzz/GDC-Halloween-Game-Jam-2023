@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4473707389639359140}
   - component: {fileID: 4473707389639359141}
   - component: {fileID: 4179785240334711445}
+  - component: {fileID: 550564247}
   m_Layer: 0
   m_Name: TempTower
   m_TagString: Untagged
@@ -100,4 +101,18 @@ MonoBehaviour:
   placed: 0
   area:
     m_Position: {x: 0, y: 0, z: 0}
-    m_Size: {x: 1, y: 1, z: 0}
+    m_Size: {x: 1, y: 1, z: 1}
+--- !u!114 &550564247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473707389639359131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6189ff04e558c7e4690dd4550f6345b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretRotationPoint: {fileID: 0}
+  targetingRange: 5
