@@ -53,9 +53,9 @@ TagManager:
   - name: Enemies
     uniqueID: 709491951
     locked: 0
-  - name: Player Room
-    uniqueID: 1768071903
-    locked: 0
   - name: Scoreboard
     uniqueID: 2351005179
+    locked: 0
+  - name: Player Room
+    uniqueID: 1768071903
     locked: 0
