@@ -56,9 +56,13 @@ public class GridBuildingSystem : MonoBehaviour
         buildModeEnabled = false;
 
         tileBases.Add(TileType.empty, null);
+        Debug.Log(TileType.empty);
         tileBases.Add(TileType.white, whiteTile);
+        Debug.Log(TileType.white);
         tileBases.Add(TileType.green, greenTile);
+        Debug.Log(TileType.green);
         tileBases.Add(TileType.red, redTile);
+        Debug.Log(TileType.red);
     }
 
     private void Update()
@@ -127,36 +131,6 @@ public class GridBuildingSystem : MonoBehaviour
 
         }
 
-        return array;
-    }
-    private static TileBase[] getTilesBlockPath(Vector3Int tileCoordinates, Tilemap tilemap)
-    {
-        TileBase[] array = new TileBase[4];
-        int counter = 0;
-
-        while (counter < 4)
-        {
-            var v = tileCoordinates;
-
-            if (counter == 0)            // First Pass
-            {
-                v += new Vector3Int(1, 0, 0);
-            }
-            else if (counter == 1)       // Second Pass
-            {
-                v += new Vector3Int(0, 1, 0);
-            }
-            else if (counter == 2)      // Third Pass
-            {
-                v += new Vector3Int(-1, 0, 0);
-            }
-            else                        // Final Pass
-            {
-                v += new Vector3Int(0, -1, 0);
-            }
-            array[counter] = tilemap.GetTile(v);
-            counter++;
-        }
         return array;
     }
 

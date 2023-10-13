@@ -44,6 +44,7 @@ public class Building : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         placed = true;
+        Debug.Log("Take Area");
         GridBuildingSystem.current.takeArea(areaTemp);
     }
 
