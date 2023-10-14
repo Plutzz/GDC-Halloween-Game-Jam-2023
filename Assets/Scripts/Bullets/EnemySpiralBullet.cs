@@ -1,34 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
-using UnityEditor.Rendering;
 using UnityEngine;
 
-public class EnemyHomingBullet : MonoBehaviour
+public class EnemySpiralBullet : MonoBehaviour
 {
     public float force;
     public int damage;
+    public float rotationRate = 80;
 
     private GameObject player;
+    private Vector3 direction;
+    private Vector3 playerPosition;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start ()
+    void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         player = PlayerMovement.Instance.gameObject;
+        playerPosition = player.transform.position;
+        Destroy(this.gameObject, 10f);
     }
 
     void Update()
     {
+        direction = playerPosition - transform.position;
 
-        Vector3 direction = player.transform.position - transform.position;
+        direction = Quaternion.Euler(0, 0, rotationRate) * direction;
 
-        float distance = force * Time.deltaTime;
-
-        transform.Translate(direction.normalized * distance, Space.World);
-
-        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        float distanceThisFrame = force * Time.deltaTime;
+            
+        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
