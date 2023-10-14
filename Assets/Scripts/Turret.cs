@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using System;
+
 
 public class Turret : MonoBehaviour
 {
@@ -11,7 +13,9 @@ public class Turret : MonoBehaviour
     [SerializeField] private LayerMask enemies;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
-    [SerializeField] private GameObject rangeDisplay;
+    [SerializeField] private GameObject upgradeUI;
+    [SerializeField] private Button upgradeButton;
+
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -90,6 +94,16 @@ public class Turret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+    }
+
     private void OnDrawGizmos()
     {
         Handles.color = Color.cyan;
@@ -111,6 +125,7 @@ public class Turret : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             SelectTurret();
+            OpenUpgradeUI();
         }
     }
 

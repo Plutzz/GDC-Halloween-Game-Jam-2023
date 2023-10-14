@@ -79,7 +79,6 @@ public class GridBuildingSystem : MonoBehaviour
                     return;
                 }
 
-                LevelManager.Instance.SpendCurrency(SelectedTower.Cost);
                 initializeWithBuilding(SelectedTower.prefab);
             }
         }
@@ -251,6 +250,7 @@ public class GridBuildingSystem : MonoBehaviour
         tempBuilding.GetComponent<Turret>().canFire = true;
         tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
         BuildingDictionary.Add(tempBuilding.area.position, tempBuilding);
+        LevelManager.Instance.SpendCurrency(SelectedTower.Cost);
         tempBuilding.place();
     }
 
