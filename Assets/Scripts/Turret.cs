@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public class Turret : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Turret : MonoBehaviour
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
+    [SerializeField] private float rotationSpeed = 5f;
 
     private Transform target;
 
@@ -22,7 +24,14 @@ public class Turret : MonoBehaviour
         }
 
         RotateTowardsTarget();
+
+        if(!CheckTargetIsInRange())
+        {
+            target = null;
+        }
     }
+
+    
 
     private void FindTarget()
     {
@@ -36,15 +45,20 @@ public class Turret : MonoBehaviour
         
     }
 
+    private bool CheckTargetIsInRange()
+    {
+        return (Vector2.Distance(target.position, transform.position) <= targetingRange);
+    }
+
     private void RotateTowardsTarget()
     {
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
 
         Quaternion _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        transform.rotation = _targetRotation;
+        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);

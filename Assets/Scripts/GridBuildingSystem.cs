@@ -15,7 +15,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 // This script is the main logic of the grid building system
 public class GridBuildingSystem : MonoBehaviour
 {
-    public static GridBuildingSystem current;
+    public static GridBuildingSystem Instance;
     public Dictionary<Vector3Int, Building> BuildingDictionary;
 
     public GridLayout gridLayout;
@@ -48,7 +48,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Awake()
     {
-        current = this;
+        Instance = this;
         BuildingDictionary = new Dictionary<Vector3Int, Building>();
     }
     private void Start()
