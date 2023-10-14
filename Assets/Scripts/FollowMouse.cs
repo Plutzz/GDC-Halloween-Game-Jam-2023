@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class FollowMouse : MonoBehaviour
 {
-    private Vector3 mouseposition;
-    public float moveSpeed = 0.1f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        Vector2 _cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = _cursorPos;
     }
 }
