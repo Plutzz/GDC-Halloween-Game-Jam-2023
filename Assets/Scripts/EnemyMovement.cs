@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     [Header("Attribute")]
     [SerializeField] private float moveSpeed = 2f;
 
+    public EnemyEndBehavior endBehavior;
+
     private Transform target;
     private int pathIndex = 0;
 
@@ -29,7 +31,9 @@ public class EnemyMovement : MonoBehaviour
             if(pathIndex == LevelManager.Instance.path.Length)
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
-                Destroy(gameObject);
+                endBehavior.ReachedEnd();
+                endBehavior.end = true;
+                Destroy(this);
                 return;
             }
             //else set target to next node
