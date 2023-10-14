@@ -47,9 +47,6 @@ TagManager:
   - name: Paths
     uniqueID: 198991179
     locked: 0
-  - name: Entities
-    uniqueID: 2466755831
-    locked: 0
   - name: Enemies
     uniqueID: 709491951
     locked: 0
@@ -58,4 +55,7 @@ TagManager:
     locked: 0
   - name: Player Room
     uniqueID: 1768071903
+    locked: 0
+  - name: Entities
+    uniqueID: 2466755831
     locked: 0
