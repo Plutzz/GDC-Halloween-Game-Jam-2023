@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
+    [Header("Building Attributes")]
     public bool placed;
     public BoundsInt area;
 
-    void Start()
+    [Header("Tower Attributes")]
+    public string Name;
+    public int Cost;
+    public GameObject prefab;
+
+    public Building(string _name, int _cost, GameObject _prefab)
     {
-
+        Name = _name;
+        Cost = _cost;
+        prefab = _prefab;
     }
-
     public bool getPlaced()
     {
         return placed;

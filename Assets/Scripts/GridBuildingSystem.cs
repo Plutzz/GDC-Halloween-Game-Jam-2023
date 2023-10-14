@@ -38,7 +38,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     [Header("TEMP VARIBLES")]
 
-    public GameObject Tower1;
+    public Building SelectedTower;
 
 
 
@@ -68,10 +68,20 @@ public class GridBuildingSystem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                initializeWithBuilding(Tower1);
+                SelectedTower = BuildManager.Instance.GetSelectedTower();
+
+
+                if (SelectedTower == null) return;
+
+                if(SelectedTower.Cost > LevelManager.Instance.Currency)
+                {
+                    Debug.Log("You can't afford this tower");
+                    return;
+                }
+
+                LevelManager.Instance.SpendCurrency(SelectedTower.Cost);
+                initializeWithBuilding(SelectedTower.prefab);
             }
-
-
         }
 
 
@@ -237,7 +247,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void placeBuilding(Vector3Int cellPos)
     {
         setBuildMode(false);
-        rend.color = new Color(1f, 1f, 1f, 1f);
+        rend.color = SelectedTower.GetComponent<SpriteRenderer>().color;
         tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
         BuildingDictionary.Add(tempBuilding.area.position, tempBuilding);
         tempBuilding.place();
