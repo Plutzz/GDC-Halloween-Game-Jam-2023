@@ -32,7 +32,6 @@ public class PlayerHealth : DamageableEntity
         // Debug.Log(fillvalue);
 
         hpBar.value = fillvalue;
-        Debug.Log("hit");
     }
 
 }

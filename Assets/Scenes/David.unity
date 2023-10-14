@@ -7742,7 +7742,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1768071903
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -10884,7 +10884,7 @@ SortingGroup:
   m_GameObject: {fileID: 1341240517}
   m_Enabled: 1
   m_SortingLayerID: 901209635
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 1
 --- !u!199 &1341240519
 ParticleSystemRenderer:
@@ -16389,7 +16389,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1943962117
-  m_SortingLayer: 7
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -18549,7 +18549,7 @@ VFXRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 901209635
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
 --- !u!2083052967 &1845071028
 VisualEffect:
@@ -18727,6 +18727,27 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
+--- !u!1 &1925666633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6722418319717562114, guid: ccee92d101038474d93d214e4233b30b, type: 3}
+  m_PrefabInstance: {fileID: 2047904938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1925666638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925666633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798bc46404588054d96b6f20d8e454a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 0
+  maxHp: 100
+  hpSliderFill: {fileID: 0}
+  hpBar: {fileID: 0}
 --- !u!1 &1991039835
 GameObject:
   m_ObjectHideFlags: 0
@@ -19247,7 +19268,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1768071903
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

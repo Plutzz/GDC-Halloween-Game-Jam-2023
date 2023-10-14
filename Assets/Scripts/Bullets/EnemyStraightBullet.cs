@@ -19,8 +19,8 @@ public class EnemyStraightBullet : MonoBehaviour
         rb.velocity = transform.up * force;
     }
     
-    private void OnTriggerEnter2D(Collider2D collider) {
-        if(collider.gameObject.tag == "Player")
+    private void OnTriggerEnter2D (Collider2D collider) {
+        if(collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
             Destroy(this.gameObject);
