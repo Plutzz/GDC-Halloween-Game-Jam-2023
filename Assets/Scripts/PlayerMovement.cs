@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
  
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
-    //I recommend 7 for the move speed, and 1.2 for the force damping
     public Rigidbody2D rb;
     public float moveSpeed;
     public Vector2 PlayerInput;
