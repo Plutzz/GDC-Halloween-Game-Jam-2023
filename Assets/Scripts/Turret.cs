@@ -18,14 +18,23 @@ public class Turret : MonoBehaviour
 
 
     [Header("Attribute")]
-    [SerializeField] private float targetingRange = 5f;
-    [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float bps = 1f; //Bullets Per Second
-    public bool canFire = false;  //Prevents preview turret from firing
+    [SerializeField] private float rotationSpeed = 500f;
+    [SerializeField] private float targetingRange;
+    [SerializeField] private float targetingRangeUpgradeFactor = 0.4f;
+    [SerializeField] private float bps;                             //Bullets Per Second
+    [SerializeField] private float bpsUpgradeFactor = 0.6f;
+    [SerializeField] private float upgradeCostFactor = 0.8f;
+    [SerializeField] private int baseUpgradeCost = 100;
+    public bool canFire = false;                                    //Prevents preview turret from firing
+
+    private float targetingRangeBase = 5f;
+    private float bpsBase = 1f; //Bullets Per Second
 
     private static Turret selectedTurret;
     private Transform target;
     private float timeUntilFire;
+
+    private int level = 1;
 
     private void Start()
     {
@@ -104,6 +113,36 @@ public class Turret : MonoBehaviour
         upgradeUI.SetActive(false);
     }
 
+    public void Upgrade()
+    {
+        if (baseUpgradeCost > LevelManager.Instance.Currency) return;
+
+        LevelManager.Instance.SpendCurrency(CalculateCost());
+
+        level++;
+
+        bps = CalculateBPS();
+        targetingRange = CalculateRange();
+
+        //CloseUpgradeUI(); //Use this if you want UI to close after every upgrade
+
+
+    }
+
+    private int CalculateCost()
+    {
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCostFactor));
+    }
+
+    private float CalculateBPS()
+    {
+        return Mathf.RoundToInt(bpsBase * Mathf.Pow(level, bpsUpgradeFactor));
+    }
+    private float CalculateRange()
+    {
+        return Mathf.RoundToInt(targetingRangeBase * Mathf.Pow(level, targetingRangeUpgradeFactor));
+    }
+
     private void OnDrawGizmos()
     {
         Handles.color = Color.cyan;
@@ -122,10 +161,14 @@ public class Turret : MonoBehaviour
 
     private void OnMouseOver()
     {
+        //TODO: Check if not in build mode
         if (Input.GetMouseButton(0))
         {
-            SelectTurret();
-            OpenUpgradeUI();
+            if(!UIManager.Instance.IsHoveringUI())
+            {
+                SelectTurret();
+                OpenUpgradeUI();
+            }
         }
     }
 
