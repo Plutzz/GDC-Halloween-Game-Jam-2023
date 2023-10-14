@@ -25,6 +25,7 @@ public class EnemyAimedBullet : MonoBehaviour
 
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        Destroy(this.gameObject, 5f);
     }
     private void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "Player")

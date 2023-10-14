@@ -16,6 +16,7 @@ public class EnemyHomingBullet : MonoBehaviour
     void Start ()
     {
         player = PlayerMovement.Instance.gameObject;
+        Destroy(this.gameObject, 5f);
     }
 
     void Update()

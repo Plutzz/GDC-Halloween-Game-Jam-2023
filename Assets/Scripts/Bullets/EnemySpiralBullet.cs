@@ -19,7 +19,7 @@ public class EnemySpiralBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = PlayerMovement.Instance.gameObject;
         playerPosition = player.transform.position;
-        Destroy(this.gameObject, 10f);
+        Destroy(this.gameObject, 8f);
     }
 
     void Update()

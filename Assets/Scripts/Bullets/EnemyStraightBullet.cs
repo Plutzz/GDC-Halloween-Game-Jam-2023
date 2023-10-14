@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyStraightBullet : MonoBehaviour
@@ -17,12 +18,13 @@ public class EnemyStraightBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         transform.Rotate(turn90);
         rb.velocity = transform.up * force;
+        Destroy(this.gameObject, 5f);
     }
     
     private void OnTriggerEnter2D (Collider2D collider) {
         if(collider.gameObject.CompareTag("Player"))
         {
-            collider.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
+            PlayerHealth.Instance.takeDamage(damage);
             Destroy(this.gameObject);
         }
     }
