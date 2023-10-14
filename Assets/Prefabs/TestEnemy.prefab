@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7014413318007353634}
   - component: {fileID: 1207222951}
   - component: {fileID: -527372685656137031}
+  - component: {fileID: -3182388863211686983}
   m_Layer: 6
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7014413318007353634}
   moveSpeed: 10
+  endBehavior: {fileID: -3182388863211686983}
 --- !u!114 &-527372685656137031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +155,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 10
   currencyValue: 100
+--- !u!114 &-3182388863211686983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361887540599322940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a789cc1a9e637745908e93696ba9092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerOfRoom: {x: -15, y: -5, z: 0}
+  end: 0
+  rotationRadius: 2
+  angularSpeed: 100
+  posX: 0
+  posY: 0
+  angle: 0
