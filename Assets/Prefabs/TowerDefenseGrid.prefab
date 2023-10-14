@@ -4160,7 +4160,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -923282707
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4237,7 +4237,7 @@ MonoBehaviour:
   redTile: {fileID: 11400000, guid: 34d5a13901daf154589f8fcd24cfa342, type: 2}
   greenTile: {fileID: 11400000, guid: 9763fd72b8343a2478337bb3bb39fe80, type: 2}
   whiteTile: {fileID: 11400000, guid: 445768353aff4a04f93ee40da28ed667, type: 2}
-  Tower1: {fileID: 4473707389639359131, guid: ddf058eb373c11540a3c1b106006cba3, type: 3}
+  SelectedTower: {fileID: 0}
 --- !u!114 &1970793966776427820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4250,7 +4250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90348445b56a5874fb5901949818169b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towers: []
+  towers:
+  - {fileID: 4179785240334711445, guid: ddf058eb373c11540a3c1b106006cba3, type: 3}
+  - {fileID: 4179785240334711445, guid: c6125716a6e942d49a8c5929bf2d71e0, type: 3}
 --- !u!1 &5735147100623174606
 GameObject:
   m_ObjectHideFlags: 0
@@ -4391,7 +4393,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -923282707
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

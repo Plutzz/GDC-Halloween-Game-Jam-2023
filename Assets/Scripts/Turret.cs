@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using System;
-
+using Unity.VisualScripting;
 
 public class Turret : MonoBehaviour
 {
@@ -15,6 +15,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private GameObject rangeDisplay;
 
 
     [Header("Attribute")]
@@ -42,6 +43,7 @@ public class Turret : MonoBehaviour
 
         bps = bpsBase;
         targetingRange = targetingRangeBase;
+        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
 
         upgradeButton.onClick.AddListener(Upgrade);
     }
@@ -50,7 +52,16 @@ public class Turret : MonoBehaviour
     {
         if (!canFire) return;
 
-        if(target == null)
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!UIManager.Instance.IsHoveringUI())
+            {
+                rangeDisplay.SetActive(false);
+            }
+
+        }
+
+        if (target == null)
         {
             FindTarget();
             return;
@@ -128,6 +139,7 @@ public class Turret : MonoBehaviour
 
         bps = CalculateBPS();
         targetingRange = CalculateRange();
+        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
 
         //CloseUpgradeUI(); //Use this if you want UI to close after every upgrade
         Debug.Log("New BPS: " + bps);
