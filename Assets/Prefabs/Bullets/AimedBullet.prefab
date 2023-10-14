@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7128646458143444594}
   - component: {fileID: 7128646458143444595}
-  - component: {fileID: 7128646458143444592}
   - component: {fileID: 7128646458143444593}
+  - component: {fileID: 7128646458143444592}
   - component: {fileID: 5558073264502789339}
   m_Layer: 7
-  m_Name: Bullet
+  m_Name: AimedBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +87,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7128646458143444593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128646458143444606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b48302ad5f0d646a7f89503514ae6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpread: 1
+  force: 5
+  damage: 1
 --- !u!50 &7128646458143444592
 Rigidbody2D:
   serializedVersion: 4
@@ -108,21 +123,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &7128646458143444593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7128646458143444606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b48302ad5f0d646a7f89503514ae6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpread: 1
-  force: 5
-  damage: 1
 --- !u!61 &5558073264502789339
 BoxCollider2D:
   m_ObjectHideFlags: 0
