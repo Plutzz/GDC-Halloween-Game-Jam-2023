@@ -56,13 +56,9 @@ public class GridBuildingSystem : MonoBehaviour
         buildModeEnabled = false;
 
         tileBases.Add(TileType.empty, null);
-        Debug.Log(TileType.empty);
         tileBases.Add(TileType.white, whiteTile);
-        Debug.Log(TileType.white);
         tileBases.Add(TileType.green, greenTile);
-        Debug.Log(TileType.green);
         tileBases.Add(TileType.red, redTile);
-        Debug.Log(TileType.red);
     }
 
     private void Update()

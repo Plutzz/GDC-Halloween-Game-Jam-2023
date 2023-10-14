@@ -9,13 +9,27 @@ public class TurretBullet : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private int damage = 10;
 
     private Transform target;
-
+    public void SetTarget(Transform _target)
+    {
+        target = _target;
+    }
     private void FixedUpdate()
     {
+        if (target == null) return;
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * bulletSpeed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Enemy Hit");
+        //Take Health From Enemy
+        collision.gameObject.GetComponent<EnemyHealth>().takeDamage(damage);
+
+        Destroy(gameObject);
     }
 }

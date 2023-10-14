@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageableEntity : MonoBehaviour
 {
-    public int currentHp;
+    [SerializeField] protected int currentHp;
     public virtual void takeDamage(int damage)
     {
         currentHp -= damage;
@@ -16,7 +16,7 @@ public class DamageableEntity : MonoBehaviour
         return currentHp;
     }
 
-    public virtual void OnDeath()
+    protected virtual void OnDeath()
     {
         Destroy(gameObject);
     }

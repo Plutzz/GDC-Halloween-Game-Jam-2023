@@ -48,7 +48,9 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
+        GameObject _bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+        TurretBullet bulletScript = _bullet.GetComponent<TurretBullet>();
+        bulletScript.SetTarget(target);
     }
 
     
