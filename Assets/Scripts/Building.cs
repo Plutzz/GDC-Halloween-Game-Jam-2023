@@ -27,11 +27,11 @@ public class Building : MonoBehaviour
 
     public bool canBePlaced()
     {
-        Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
+        Vector3Int positionInt = GridBuildingSystem.Instance.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (GridBuildingSystem.current.canTakeArea(areaTemp))
+        if (GridBuildingSystem.Instance.canTakeArea(areaTemp))
         {
             return true;
         }
@@ -40,12 +40,12 @@ public class Building : MonoBehaviour
 
     public void place()
     {
-        Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
+        Vector3Int positionInt = GridBuildingSystem.Instance.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         placed = true;
         Debug.Log("Take Area");
-        GridBuildingSystem.current.takeArea(areaTemp);
+        GridBuildingSystem.Instance.takeArea(areaTemp);
     }
 
     public void setSprite()
