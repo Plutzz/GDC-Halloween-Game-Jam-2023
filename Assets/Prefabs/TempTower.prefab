@@ -103,7 +103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1828211465
-  m_SortingLayer: 3
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
@@ -190,7 +190,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1828211465
-  m_SortingLayer: 3
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.3018868, g: 0.13243146, b: 0.13243146, a: 1}
@@ -232,5 +232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationPoint: {fileID: 527339003}
+  enemies:
+    serializedVersion: 2
+    m_Bits: 0
+  bulletPrefab: {fileID: 5584226705546987239, guid: 0dab5e2ed1df8f644a74baa8524b6a7a, type: 3}
+  firingPoint: {fileID: 1586073725}
   targetingRange: 3
-  rotationSpeed: 300
+  rotationSpeed: 500
+  bps: 1
