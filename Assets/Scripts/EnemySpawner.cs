@@ -72,6 +72,10 @@ public class EnemySpawner : MonoBehaviour
     private void EnemyDestroyed()
     {
         enemiesAlive--;
+        if(enemiesAlive < 0)
+        {
+            enemiesAlive = 0;
+        }
     }
 
     private int EnemiesPerWave()

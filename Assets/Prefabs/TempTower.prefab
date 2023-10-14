@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 3216723950515134201}
   - component: {fileID: 5475143958240010799}
   - component: {fileID: 7594987540670127854}
+  - component: {fileID: 3852285675332164183}
   m_Layer: 5
   m_Name: UpgradeUI
   m_TagString: Untagged
@@ -699,3 +700,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3852285675332164183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500679111391953580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb57fc8e66f07041b95de513c9146ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
