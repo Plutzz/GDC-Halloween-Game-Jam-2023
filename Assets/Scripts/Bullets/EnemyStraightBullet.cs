@@ -7,6 +7,7 @@ public class EnemyStraightBullet : MonoBehaviour
     public float force;
     public int damage;
 
+    private Vector3 turn90 = new(0, 0, -90);
     private GameObject player;
     private Rigidbody2D rb;
 
@@ -14,10 +15,10 @@ public class EnemyStraightBullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        transform.Rotate(turn90);
         rb.velocity = transform.up * force;
-        //transform.rotation = Quaternion.Euler(0, 0, 90);
     }
+    
     private void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "Player")
         {
