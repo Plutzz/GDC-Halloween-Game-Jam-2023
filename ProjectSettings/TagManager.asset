@@ -56,10 +56,10 @@ TagManager:
   - name: Player Room
     uniqueID: 1768071903
     locked: 0
-  - name: Scoreboard
+  - name: Spells
     uniqueID: 2351005179
     locked: 0
-  - name: Entities
+  - name: Towers
     uniqueID: 2466755831
     locked: 0
   - name: BuildingSystem
