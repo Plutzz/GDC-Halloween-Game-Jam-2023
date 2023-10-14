@@ -39,6 +39,11 @@ public class Turret : MonoBehaviour
     private void Start()
     {
         canFire = false;
+
+        bps = bpsBase;
+        targetingRange = targetingRangeBase;
+
+        upgradeButton.onClick.AddListener(Upgrade);
     }
 
     private void Update()
@@ -115,7 +120,7 @@ public class Turret : MonoBehaviour
 
     public void Upgrade()
     {
-        if (baseUpgradeCost > LevelManager.Instance.Currency) return;
+        if (CalculateCost() > LevelManager.Instance.Currency) return;
 
         LevelManager.Instance.SpendCurrency(CalculateCost());
 
@@ -125,7 +130,9 @@ public class Turret : MonoBehaviour
         targetingRange = CalculateRange();
 
         //CloseUpgradeUI(); //Use this if you want UI to close after every upgrade
-
+        Debug.Log("New BPS: " + bps);
+        Debug.Log("New Range: " + targetingRange);
+        Debug.Log("New Cost: " + CalculateCost());
 
     }
 
@@ -136,11 +143,11 @@ public class Turret : MonoBehaviour
 
     private float CalculateBPS()
     {
-        return Mathf.RoundToInt(bpsBase * Mathf.Pow(level, bpsUpgradeFactor));
+        return bpsBase * Mathf.Pow(level, bpsUpgradeFactor);
     }
     private float CalculateRange()
     {
-        return Mathf.RoundToInt(targetingRangeBase * Mathf.Pow(level, targetingRangeUpgradeFactor));
+        return targetingRangeBase * Mathf.Pow(level, targetingRangeUpgradeFactor);
     }
 
     private void OnDrawGizmos()

@@ -11,7 +11,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Start()
     {
-        Currency = 100;
+        Currency = 500;
     }
 
     public void IncreaseCurrency(int amount)
