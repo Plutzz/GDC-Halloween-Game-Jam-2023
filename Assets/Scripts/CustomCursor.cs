@@ -3,28 +3,22 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class CustomCursor: MonoBehaviour
+public class CustomCursor: Singleton<CustomCursor>
 {
-    [SerializeField] private Texture2D cursorTexture;
-    [SerializeField] private Texture2D cursorTextureDown;
-
+    public Texture2D[] cursors;
+    private Texture2D currentCursor;
     private Vector2 cursorHotspot;
     void Start()
     {
         cursorHotspot = Vector2.zero;
-        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+        currentCursor = cursors[0];
+        Cursor.SetCursor(currentCursor, cursorHotspot, CursorMode.Auto);
     }
 
-    private void Update()
+    public void setCursor(int _index)
     {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Cursor.SetCursor(cursorTextureDown, cursorHotspot, CursorMode.Auto);
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
-        }
+        currentCursor = cursors[_index];
+        Cursor.SetCursor(currentCursor, cursorHotspot, CursorMode.Auto);
     }
+
 }

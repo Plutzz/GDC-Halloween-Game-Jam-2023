@@ -11,17 +11,27 @@ public class Turret : MonoBehaviour
     [SerializeField] private LayerMask enemies;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private GameObject rangeDisplay;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float bps = 1f; //Bullets Per Second
+    public bool canFire = false;  //Prevents preview turret from firing
 
+    private static Turret selectedTurret;
     private Transform target;
     private float timeUntilFire;
 
+    private void Start()
+    {
+        canFire = false;
+    }
+
     private void Update()
     {
+        if (!canFire) return;
+
         if(target == null)
         {
             FindTarget();
@@ -57,7 +67,7 @@ public class Turret : MonoBehaviour
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemies);
 
         if(hits.Length > 0 )
         {
@@ -85,4 +95,28 @@ public class Turret : MonoBehaviour
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
+
+   private void OnMouseEnter()
+    {
+        CustomCursor.Instance.setCursor(1);
+    }
+
+    private void OnMouseExit()
+    {
+        CustomCursor.Instance.setCursor(0);
+    }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            SelectTurret();
+        }
+    }
+
+    private void SelectTurret()
+    {
+        selectedTurret = this;
+    }
+
 }
