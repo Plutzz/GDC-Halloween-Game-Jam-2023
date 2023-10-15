@@ -27,17 +27,17 @@ public class Menu : MonoBehaviour
         currencyUI.text = LevelManager.Instance.Currency.ToString();
 
         // Cannon (Type Turret)
-        attackSpeedUI[0].text = Cannon.bps.ToString("F2") + "/s";
-        lifetimeUI[0].text = Cannon.lifetime.ToString() + "s";
+        attackSpeedUI[0].text = Cannon.bps.ToString("F2");
+        lifetimeUI[0].text = Cannon.lifetime.ToString();
         rangeUI[0].text = Cannon.targetingRange.ToString("F2");
         damageUI[0].text = Cannon.damage.ToString();
         upgradeCostUI[0].text = Cannon.CalculateCost().ToString();
         levelUI[0].text = Cannon.level.ToString();
         levelFillUI[0].fillAmount = Cannon.level / (float)Cannon.maxLevel;
 
-        // Flower (Type Turret
-        attackSpeedUI[1].text = Flower.bps.ToString("F2") + "/s";
-        lifetimeUI[1].text = Flower.lifetime.ToString() + "s";
+        // Flower (Type Turret)
+        attackSpeedUI[1].text = Flower.bps.ToString("F2");
+        lifetimeUI[1].text = Flower.lifetime.ToString();
         rangeUI[1].text = Flower.rotationSpeed.ToString();
         damageUI[1].text = Flower.damage.ToString();
         upgradeCostUI[1].text = Flower.CalculateCost().ToString();
