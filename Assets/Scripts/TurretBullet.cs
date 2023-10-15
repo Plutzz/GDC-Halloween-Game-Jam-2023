@@ -16,6 +16,11 @@ public class TurretBullet : MonoBehaviour
     {
         target = _target;
     }
+
+    public void SetDamage(int _damage)
+    {
+        damage = _damage;
+    }
     private void FixedUpdate()
     {
         if (target == null) return;
@@ -26,7 +31,6 @@ public class TurretBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Enemy Hit");
         //Take Health From Enemy
         collision.gameObject.GetComponent<EnemyHealth>().takeDamage(damage);
 
