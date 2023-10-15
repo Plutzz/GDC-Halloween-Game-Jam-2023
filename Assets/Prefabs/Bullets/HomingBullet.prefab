@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 4.5
-  damage: 100
+  damage: 5
+  homingTime: 1.5
 --- !u!50 &7128646458143444592
 Rigidbody2D:
   serializedVersion: 4
