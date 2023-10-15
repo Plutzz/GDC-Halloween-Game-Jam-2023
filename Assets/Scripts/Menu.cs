@@ -35,7 +35,7 @@ public class Menu : MonoBehaviour
         levelUI[0].text = Cannon.level.ToString();
         levelFillUI[0].fillAmount = Cannon.level / (float)Cannon.maxLevel;
 
-        // Flower (Type Turret
+        // Flower (Type Turret)
         attackSpeedUI[1].text = Flower.bps.ToString("F2") + "/s";
         lifetimeUI[1].text = Flower.lifetime.ToString() + "s";
         rangeUI[1].text = Flower.rotationSpeed.ToString();
