@@ -253,7 +253,7 @@ public class GridBuildingSystem : MonoBehaviour
     {
         setBuildMode(false);
         rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 1f);
-        tempBuilding.GetComponent<Cannon>().isActive = true;
+        tempBuilding.GetComponent<BaseTurret>().isActive = true;
         BuildingDictionary.Add(tempBuilding.area.position, tempBuilding);
         tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
         LevelManager.Instance.SpendMana(SelectedTower.Cost);

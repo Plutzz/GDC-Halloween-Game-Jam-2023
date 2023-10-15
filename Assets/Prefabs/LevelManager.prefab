@@ -67,6 +67,7 @@ MonoBehaviour:
   enemiesPerSecond: 2
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
+  enemiesAlive: 0
 --- !u!114 &4736416813018108912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +107,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  surround:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Currency: 0
   maxMana: 500
-  manaPerSecond: 5
+  manaPerSecond: 20
+  currentMana: 0
   mana: {fileID: 0}
