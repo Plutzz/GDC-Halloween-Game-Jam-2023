@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1828211465
-  m_SortingLayer: 7
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2046056275, guid: 0f5b80ee1345d064682136ca8c70a0eb, type: 3}
+  m_Sprite: {fileID: -1886199000, guid: 3603f548d10e8c649a25aa08fc5da58b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5420295729461322053}
   bulletSpeed: 30
+  damage: 10
 --- !u!50 &5420295729461322053
 Rigidbody2D:
   serializedVersion: 4
