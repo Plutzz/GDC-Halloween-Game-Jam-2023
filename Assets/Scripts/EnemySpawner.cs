@@ -20,7 +20,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
-
+    
+    public TMPro.TextMeshProUGUI currentRoundIndicator;
     private int currentWave = 0;
     private float timeSinceLastSpawn;
     public int enemiesAlive;
@@ -37,7 +38,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private void Start()
     {
         StartCoroutine(StartWave());
-        Debug.Log(currentWave);
+        currentRoundIndicator.text = currentWave.ToString();
     }
     private void Update()
     {
@@ -100,6 +101,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         yield return new WaitForSeconds(timeBetweenWaves);
         currentWave++;
+        currentRoundIndicator.text = currentWave.ToString();
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
         eps = EnemiesPerSecond();
