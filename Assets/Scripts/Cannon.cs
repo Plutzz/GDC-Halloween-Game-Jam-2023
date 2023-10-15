@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.Rendering.Universal;
 
 public class Cannon : MonoBehaviour
 {
@@ -24,12 +25,12 @@ public class Cannon : MonoBehaviour
     private static float targetingRangeUpgradeFactor = 0.4f;
 
     //Bullets per second
-    public static float bps {get; private set;}                             
-    private static float bpsBase = 1f; 
+    public static float bps { get; private set; }
+    private static float bpsBase = 1f;
     private static float bpsUpgradeFactor = 0.6f;
 
     //Damage Per Bullet
-    public static int damage {get; private set;}
+    public static int damage { get; private set; }
     private static int damageBase = 5;
     private static float damageUpgradeFactor = 0.3f;
 
@@ -54,7 +55,7 @@ public class Cannon : MonoBehaviour
 
         CalculateAttributes();
 
-        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
+        
     }
 
     private void Update()
@@ -63,20 +64,14 @@ public class Cannon : MonoBehaviour
 
         timeUntilFire += Time.deltaTime;
 
+        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
+        rangeDisplay.GetComponent<Light2D>().pointLightOuterRadius = targetingRange;
+
         timeAlive += Time.deltaTime;
 
-        if (!(lifetime < 0) && timeAlive > lifetime)   
+        if (!(lifetime < 0) && timeAlive > lifetime)
         {
             Destroy(gameObject);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (!UIManager.Instance.IsHoveringUI())
-            {
-                rangeDisplay.SetActive(false);
-            }
-
         }
 
         if (target == null)
@@ -87,14 +82,14 @@ public class Cannon : MonoBehaviour
 
         RotateTowardsTarget();
 
-        if(!CheckTargetIsInRange())
+        if (!CheckTargetIsInRange())
         {
             target = null;
         }
         else
         {
 
-            if(timeUntilFire >= 1f / bps)
+            if (timeUntilFire >= 1f / bps)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -110,18 +105,18 @@ public class Cannon : MonoBehaviour
         bulletScript.SetTarget(target);
     }
 
-    
+
 
     private void FindTarget()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemies);
 
-        if(hits.Length > 0 )
+        if (hits.Length > 0)
         {
             target = hits[0].transform;
         }
 
-        
+
     }
 
     private bool CheckTargetIsInRange()
@@ -135,17 +130,6 @@ public class Cannon : MonoBehaviour
 
         Quaternion _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
-    }
-
-    public void DisplayRange()
-    {
-        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
-        upgradeUI.SetActive(true);
-    }
-
-    public void DisableDisplayRange()
-    {
-        upgradeUI.SetActive(false);
     }
 
     public static void Upgrade()
@@ -186,8 +170,6 @@ public class Cannon : MonoBehaviour
         bps = CalculateBPS();
         targetingRange = CalculateRange();
         damage = CalculateDamage();
-
-        //CloseUpgradeUI(); //Use this if you want UI to close after every upgrade
         Debug.Log("New BPS: " + bps);
         Debug.Log("New Range: " + targetingRange);
         Debug.Log("New Cost: " + CalculateCost());
@@ -200,7 +182,7 @@ public class Cannon : MonoBehaviour
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
 
-   private void OnMouseEnter()
+    private void OnMouseEnter()
     {
         CustomCursor.Instance.setCursor(1);
     }
@@ -209,16 +191,6 @@ public class Cannon : MonoBehaviour
     {
         CustomCursor.Instance.setCursor(0);
     }
-
-    private void OnMouseOver()
-    {
-        //TODO: Check if not in build mode
-        if (Input.GetMouseButton(0))
-        {
-            if(!UIManager.Instance.IsHoveringUI())
-            {
-                DisplayRange();
-            }
-        }
-    }
 }
+
+
