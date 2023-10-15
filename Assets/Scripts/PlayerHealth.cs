@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,9 +34,14 @@ public class PlayerHealth : DamageableEntity
 
             if(currentHp <= 0)
             {
-                LevelControl.Instance.GameOver();
+                OnDeath();
             }
         }
+    }
+
+    protected override void OnDeath()
+    {
+        LevelControl.Instance.GameOver();
     }
 
 }
