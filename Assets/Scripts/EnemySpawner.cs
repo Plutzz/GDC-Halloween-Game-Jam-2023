@@ -16,6 +16,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     [SerializeField] private float enemiesPerSecond = 0.5f;
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
+    [SerializeField] private float enemiesPerSecondCap = 15f;
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
@@ -24,6 +25,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private float timeSinceLastSpawn;
     public int enemiesAlive;
     private int enemiesLeftToSpawn;
+    private float eps; // enemies Per Second
     private bool isSpawning = false;
 
     protected override void Awake()
@@ -43,7 +45,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         timeSinceLastSpawn += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
+        if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
         {
             SpawnEnemy();
             enemiesLeftToSpawn--;
@@ -59,7 +61,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     private void SpawnEnemy()
     {
-        GameObject _prefabToSpawn = enemyPrefabs[0];
+        int index = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+        GameObject _prefabToSpawn = enemyPrefabs[index];
         Instantiate(_prefabToSpawn, LevelManager.Instance.StartPoint.position, Quaternion.identity);
     }
 
@@ -86,12 +89,20 @@ public class EnemySpawner : Singleton<EnemySpawner>
         //Scale Difficulty
         return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
     }
+
+    private float EnemiesPerSecond()
+    {
+        //Scale Difficulty
+        return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesPerSecondCap);
+    }
+
     private IEnumerator StartWave()
     {
         yield return new WaitForSeconds(timeBetweenWaves);
         currentWave++;
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
+        eps = EnemiesPerSecond();
     }
 
     public int GetRounds()
