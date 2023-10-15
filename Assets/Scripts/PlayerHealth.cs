@@ -4,8 +4,7 @@ using UnityEngine.UI;
 public class PlayerHealth : DamageableEntity
 {
     public int maxHp = 100;
-    public Image hpSliderFill;
-    public Slider hpBar;
+    public Image health;
 
     public static PlayerHealth Instance;
 
@@ -31,7 +30,7 @@ public class PlayerHealth : DamageableEntity
 
         // Debug.Log(fillvalue);
 
-        hpBar.value = fillvalue;
+        health.fillAmount = fillvalue;
     }
 
 }

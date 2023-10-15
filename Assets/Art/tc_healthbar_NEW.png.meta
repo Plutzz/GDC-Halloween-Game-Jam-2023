@@ -108,9 +108,9 @@ TextureImporter:
       name: tc_healthbar_NEW_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 16
-        width: 96
+        width: 95
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -129,10 +129,10 @@ TextureImporter:
       name: tc_healthbar_NEW_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 96
-        height: 16
+        x: 14
+        y: 4
+        width: 79
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
