@@ -16,7 +16,6 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class GridBuildingSystem : MonoBehaviour
 {
     public static GridBuildingSystem Instance;
-    public Dictionary<Vector3Int, Building> BuildingDictionary;
 
     public GridLayout gridLayout;
     public Tilemap mainTilemap;
@@ -49,7 +48,6 @@ public class GridBuildingSystem : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        BuildingDictionary = new Dictionary<Vector3Int, Building>();
     }
     private void Start()
     {
@@ -249,7 +247,6 @@ public class GridBuildingSystem : MonoBehaviour
         rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 1f);
         tempBuilding.GetComponent<Cannon>().isActive = true;
         tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
-        BuildingDictionary.Add(tempBuilding.area.position, tempBuilding);
         LevelManager.Instance.SpendCurrency(SelectedTower.Cost);
         tempBuilding.place();
     }

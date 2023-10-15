@@ -29360,24 +29360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 1845071028}
---- !u!1 &1879192781 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6713853922013046140, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-  m_PrefabInstance: {fileID: 1891355120}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1879192785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879192781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68a5d0dae7c5b9b4fa8ef00db7c7caa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ease: 4
 --- !u!1001 &1891355120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29385,50 +29367,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6713853922013046141, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 61
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922013046141, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922013046141, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922013046142, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1514543322, guid: b284b5ec4229c2b45905b987dbd60b86, type: 3}
-    - target: {fileID: 6713853922126835032, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922126835032, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922126835032, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922126835032, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922126835032, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922126835032, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713853922374731352, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -167.7
-      objectReference: {fileID: 0}
     - target: {fileID: 6713853922705878755, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
       propertyPath: m_Name
       value: Shop
