@@ -8,20 +8,24 @@ public class EnemyEndBehavior : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Renderer sr;
-    public float angle = 0f;
+    //public float angle = 0f;
 
     public Vector3 centerOfRotation = new(-15, 5, 0);
     public GameObject bullet;
     public bool end = false;
-    public float rotationRadius = 2f;
+    //public float rotationRadius = 2f;
     public float speed = 2f;
     public float fireRate = 1f;
     public float fireCooldown = 3f;
-    public float timeBeforeRotation = 1;
-    public float rotationTimer = 1;
+    //public float timeBeforeRotation = 1;
+    //public float rotationTimer = 1;
+
+    private Transform wayPoint;
+    private int surroundIndex = 0;
 
     void Start ()
     {
+        wayPoint = LevelManager.Instance.surround[surroundIndex];
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<Renderer>();
     }
@@ -31,7 +35,40 @@ public class EnemyEndBehavior : MonoBehaviour
         if(end)
         {
             //CirclePlayer();
-            SquarePlayer();
+
+            fireCooldown -= Time.deltaTime;
+            LookAt2D(transform, new Vector2(centerOfRotation.x, centerOfRotation.y));
+
+            if(fireCooldown <= 0)
+            {
+                Instantiate(bullet, transform.position, transform.localRotation);
+                fireCooldown = fireRate;
+            }
+        
+            //checks distance to next path node
+            if (Vector2.Distance(wayPoint.position, transform.position) <= 0.1f)
+            {
+                surroundIndex++;
+
+                //If at last node, reset nodes
+                if(surroundIndex == LevelManager.Instance.surround.Length)
+                {
+                    surroundIndex = 0;
+                }
+                //set target to next node
+                wayPoint = LevelManager.Instance.surround[surroundIndex];
+
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(end)
+        {
+            //Move towards target 
+            Vector2 _direction = (wayPoint.position - transform.position).normalized;
+            rb.velocity = _direction * speed;
         }
     }
 
@@ -41,43 +78,44 @@ public class EnemyEndBehavior : MonoBehaviour
         sr.sortingLayerID = SortingLayer.NameToID("Projectiles");
     }
 
-    private void CirclePlayer()
-    {
+    // private void CirclePlayer()
+    // {
 
-        angle += Time.deltaTime * speed;
-        Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
-        transform.position = centerOfRotation + direction * rotationRadius;
-        LookAt2D(transform, new Vector2(centerOfRotation.x, centerOfRotation.y));
+    //     angle += Time.deltaTime * speed;
+    //     Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
+    //     transform.position = centerOfRotation + direction * rotationRadius;
+    //     LookAt2D(transform, new Vector2(centerOfRotation.x, centerOfRotation.y));
 
-        if(angle >= 360f)
-        {
-            angle = 0f;
-        }
+    //     if(angle >= 360f)
+    //     {
+    //         angle = 0f;
+    //     }
 
-        if(angle >= 0 && angle <= 180)
-        {
-            fireCooldown -= Time.deltaTime;
-        }
+    //     if(angle >= 0 && angle <= 180)
+    //     {
+    //         fireCooldown -= Time.deltaTime;
+    //     }
 
-        if(fireCooldown <= 0)
-        {
-            Instantiate(bullet, transform.position, transform.localRotation);
-            fireCooldown = fireRate;
-        }
-    }
+    //     if(fireCooldown <= 0)
+    //     {
+    //         Instantiate(bullet, transform.position, transform.localRotation);
+    //         fireCooldown = fireRate;
+    //     }
+    // }
 
-    private void SquarePlayer()
-    {
-        transform.position += transform.right * speed * Time.deltaTime;
+    // private void SquarePlayer()
+    // {
+    //     transform.position += transform.up * speed * Time.deltaTime;
+    //     Debug.Log("moving right");
 
-        rotationTimer -= Time.deltaTime;
+    //     rotationTimer -= Time.deltaTime;
         
-        if(rotationTimer <= 0)
-        {
-            transform.Rotate(new Vector3(0, 0, 90));
-            rotationTimer = timeBeforeRotation;
-        }
-    }
+    //     if(rotationTimer <= 0)
+    //     {
+    //         transform.Rotate(new Vector3(0, 0, 90));
+    //         rotationTimer = timeBeforeRotation;
+    //     }
+    // }
 
     public void LookAt2D(Transform transform, Vector2 target)
     {

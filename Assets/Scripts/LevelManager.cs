@@ -8,6 +8,7 @@ public class LevelManager : Singleton<LevelManager>
 {
     public Transform StartPoint;
     public Transform[] path;
+    public Transform[] surround;
 
     public int Currency;
     public int maxMana = 500;

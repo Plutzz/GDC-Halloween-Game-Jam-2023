@@ -31,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
             //If at last node, destroy enemy
             if(pathIndex == LevelManager.Instance.path.Length)
             {
+                rb.velocity = Vector2.zero;
                 EnemySpawner.onEnemyDestroy.Invoke();
                 endBehavior.ReachedEnd();
                 endBehavior.end = true;
