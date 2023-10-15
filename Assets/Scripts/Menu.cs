@@ -9,33 +9,26 @@ public class Menu : MonoBehaviour
     [Header("References")]
     [SerializeField] TextMeshProUGUI currencyUI;
 
-    [SerializeField] Ease menuOpenEase;
-    [SerializeField] float menuOpenTime = 1f;
-    private bool menuOpen = true;
+    // INDEX KEY:
+    // 0 - Cannon
+    // 1 - Flower
+    [SerializeField] TextMeshProUGUI[] attackSpeedUI;
+    [SerializeField] TextMeshProUGUI[] lifetimeUI;
+    [SerializeField] TextMeshProUGUI[] rangeUI;
+    [SerializeField] TextMeshProUGUI[] damageUI;
+    [SerializeField] TextMeshProUGUI[] upgradeCostUI;
 
 
     private void OnGUI()
     {
         currencyUI.text = LevelManager.Instance.Currency.ToString();
-    }
 
-    public void SetSelected()
-    {
-
-    }
-
-    public void OpenMenu()
-    {
-        if(menuOpen == true)
-        {
-            GetComponent<RectTransform>().DOAnchorPosX(150f, menuOpenTime).SetEase(menuOpenEase);
-            menuOpen = false;
-        }
-        else
-        {
-            GetComponent<RectTransform>().DOAnchorPosX(-150f, menuOpenTime).SetEase(menuOpenEase);
-            menuOpen = true;
-        }
+        // Cannon (Type Turret)
+        attackSpeedUI[0].text = Cannon.bps.ToString("F2");
+        lifetimeUI[0].text = Cannon.lifetime.ToString() + "s";
+        rangeUI[0].text = Cannon.targetingRange.ToString("F2");
+        damageUI[0].text = Cannon.damage.ToString();
+        upgradeCostUI[0].text = Cannon.CalculateCost().ToString();
         
     }
 

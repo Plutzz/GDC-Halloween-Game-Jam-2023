@@ -6,6 +6,6 @@ public class UpgradeButton : Singleton<UpgradeButton>
 {
     public void UpgradeClick()
     {
-        Turret.Upgrade();
+        Cannon.Upgrade();
     }
 }

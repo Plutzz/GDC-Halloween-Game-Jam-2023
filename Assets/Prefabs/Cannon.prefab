@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: -5139769927743660179}
   - component: {fileID: 4020225419701033291}
   m_Layer: 0
-  m_Name: TempTower
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -247,7 +247,7 @@ public class GridBuildingSystem : MonoBehaviour
     {
         setBuildMode(false);
         rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 1f);
-        tempBuilding.GetComponent<Turret>().canFire = true;
+        tempBuilding.GetComponent<Cannon>().isActive = true;
         tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
         BuildingDictionary.Add(tempBuilding.area.position, tempBuilding);
         LevelManager.Instance.SpendCurrency(SelectedTower.Cost);
