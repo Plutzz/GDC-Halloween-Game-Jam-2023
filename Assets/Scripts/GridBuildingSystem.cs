@@ -29,7 +29,7 @@ public class GridBuildingSystem : MonoBehaviour
     private SpriteRenderer rend;
     private Vector3 prevPos;
     private BoundsInt prevArea;
-    private bool buildModeEnabled;
+    public bool buildModeEnabled { get; private set; }
 
     public TileBase redTile;
     public TileBase greenTile;
