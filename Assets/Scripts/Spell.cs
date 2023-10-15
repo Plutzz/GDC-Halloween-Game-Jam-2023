@@ -26,6 +26,7 @@ public class Spell : MonoBehaviour
         {
             if(LevelManager.Instance.currentMana >= costOfSpell)
             {
+                Lightning.Instance.Flash();
                 Instantiate(clearSpell, transform.position, transform.rotation);
                 LevelManager.Instance.SpendMana(costOfSpell);
                 cooldown = spellCooldown;
