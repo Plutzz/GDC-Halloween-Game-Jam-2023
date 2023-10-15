@@ -14,9 +14,11 @@ public class EnemyEndBehavior : MonoBehaviour
     public GameObject bullet;
     public bool end = false;
     public float rotationRadius = 2f;
-    public float angularSpeed = 2f;
+    public float speed = 2f;
     public float fireRate = 1f;
     public float fireCooldown = 3f;
+    public float timeBeforeRotation = 1;
+    public float rotationTimer = 1;
 
     void Start ()
     {
@@ -26,7 +28,11 @@ public class EnemyEndBehavior : MonoBehaviour
 
     void Update ()
     {
-        CirclePlayer();
+        if(end)
+        {
+            //CirclePlayer();
+            SquarePlayer();
+        }
     }
 
     public void ReachedEnd ()
@@ -37,28 +43,39 @@ public class EnemyEndBehavior : MonoBehaviour
 
     private void CirclePlayer()
     {
-        if(end)
+
+        angle += Time.deltaTime * speed;
+        Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
+        transform.position = centerOfRotation + direction * rotationRadius;
+        LookAt2D(transform, new Vector2(centerOfRotation.x, centerOfRotation.y));
+
+        if(angle >= 360f)
         {
-            angle += Time.deltaTime * angularSpeed;
-            Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
-            transform.position = centerOfRotation + direction * rotationRadius;
-            LookAt2D(transform, new Vector2(centerOfRotation.x, centerOfRotation.y));
+            angle = 0f;
+        }
 
-            if(angle >= 360f)
-            {
-                angle = 0f;
-            }
+        if(angle >= 0 && angle <= 180)
+        {
+            fireCooldown -= Time.deltaTime;
+        }
 
-            if(angle >= 0 && angle <= 180)
-            {
-                fireCooldown -= Time.deltaTime;
-            }
+        if(fireCooldown <= 0)
+        {
+            Instantiate(bullet, transform.position, transform.localRotation);
+            fireCooldown = fireRate;
+        }
+    }
 
-            if(fireCooldown <= 0)
-            {
-                Instantiate(bullet, transform.position, transform.localRotation);
-                fireCooldown = fireRate;
-            }
+    private void SquarePlayer()
+    {
+        transform.position += transform.right * speed * Time.deltaTime;
+
+        rotationTimer -= Time.deltaTime;
+        
+        if(rotationTimer <= 0)
+        {
+            transform.Rotate(new Vector3(0, 0, 90));
+            rotationTimer = timeBeforeRotation;
         }
     }
 
