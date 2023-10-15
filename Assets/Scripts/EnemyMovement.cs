@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
 
     public EnemyEndBehavior endBehavior;
+    public Animator Anim;
 
     private Transform target;
     private int pathIndex = 0;
@@ -23,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         //checks distance to next path node
-        if(Vector2.Distance(target.position, transform.position) <= 0.1f)
+        if (Vector2.Distance(target.position, transform.position) <= 0.1f)
         {
             pathIndex++;
 
@@ -51,5 +52,8 @@ public class EnemyMovement : MonoBehaviour
         //Move towards target 
         Vector2 _direction = (target.position - transform.position).normalized;
         rb.velocity = _direction * moveSpeed;
+
+        Anim.SetFloat("XSpeed", Mathf.Abs(rb.velocity.x));
+        Anim.SetFloat("YVelocity", rb.velocity.y);
     }
 }

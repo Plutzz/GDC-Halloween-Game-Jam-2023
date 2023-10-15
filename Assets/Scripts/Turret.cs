@@ -14,7 +14,6 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject upgradeUI;
-    [SerializeField] private Button upgradeButton;
     [SerializeField] private GameObject rangeDisplay;
 
 
@@ -25,34 +24,43 @@ public class Turret : MonoBehaviour
     [SerializeField] private float targetingRangeUpgradeFactor = 0.4f;
     [SerializeField] private float bps;                             //Bullets Per Second
     [SerializeField] private float bpsUpgradeFactor = 0.6f;
-    [SerializeField] private float upgradeCostFactor = 0.8f;
-    [SerializeField] private int baseUpgradeCost = 100;
+    [SerializeField] private int damage;
+    [SerializeField] private float damageUpgradeFactor = 0.3f;
+    [SerializeField] private static float upgradeCostFactor = 0.8f;
+    [SerializeField] private static int baseUpgradeCost = 100;
     public bool canFire = false;                                    //Prevents preview turret from firing
 
     private float targetingRangeBase = 5f;
     private float bpsBase = 1f; //Bullets Per Second
+    private int damageBase = 5;
 
-    private static Turret selectedTurret;
     private Transform target;
     private float timeUntilFire;
     private float timeAlive;
+    private Button upgradeButton;
 
     private static int level = 1;
+    private static event Action onUpgrade;
 
     private void Start()
     {
+        onUpgrade += CalculateAttributes;
+
         canFire = false;
 
-        bps = bpsBase;
-        targetingRange = targetingRangeBase;
-        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
+        upgradeButton = UpgradeButton.Instance.GetComponent<Button>();
 
+        CalculateAttributes();
+
+        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
         upgradeButton.onClick.AddListener(Upgrade);
     }
 
     private void Update()
     {
         if (!canFire) return;
+
+        timeUntilFire += Time.deltaTime;
 
         timeAlive += Time.deltaTime;
 
@@ -84,7 +92,6 @@ public class Turret : MonoBehaviour
         }
         else
         {
-            timeUntilFire += Time.deltaTime;
 
             if(timeUntilFire >= 1f / bps)
             {
@@ -98,6 +105,7 @@ public class Turret : MonoBehaviour
     {
         GameObject _bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         TurretBullet bulletScript = _bullet.GetComponent<TurretBullet>();
+        bulletScript.SetDamage(damage);
         bulletScript.SetTarget(target);
     }
 
@@ -128,38 +136,40 @@ public class Turret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    public void OpenUpgradeUI()
+    public void DisplayRange()
     {
         upgradeUI.SetActive(true);
     }
 
-    public void CloseUpgradeUI()
+    public void DisableDisplayRange()
     {
         upgradeUI.SetActive(false);
     }
 
-    public void Upgrade()
+    public static void Upgrade()
     {
         if (CalculateCost() > LevelManager.Instance.Currency) return;
 
         LevelManager.Instance.SpendCurrency(CalculateCost());
 
+        Debug.Log("Upgrade");
+
         level++;
 
-        bps = CalculateBPS();
-        targetingRange = CalculateRange();
-        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
 
-        //CloseUpgradeUI(); //Use this if you want UI to close after every upgrade
-        Debug.Log("New BPS: " + bps);
-        Debug.Log("New Range: " + targetingRange);
-        Debug.Log("New Cost: " + CalculateCost());
+        // if num turrets > 0, call onUpgrade (prevents error)
 
+        onUpgrade();
     }
 
-    private int CalculateCost()
+    private static int CalculateCost()
     {
         return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCostFactor));
+    }
+
+    private int CalculateDamage()
+    {
+        return Mathf.RoundToInt(damageBase * Mathf.Pow(level, damageUpgradeFactor));
     }
 
     private float CalculateBPS()
@@ -169,6 +179,21 @@ public class Turret : MonoBehaviour
     private float CalculateRange()
     {
         return targetingRangeBase * Mathf.Pow(level, targetingRangeUpgradeFactor);
+    }
+
+    //Listens to OnUpgrade();
+    private void CalculateAttributes()
+    {
+        bps = CalculateBPS();
+        targetingRange = CalculateRange();
+        damage = CalculateDamage();
+        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
+
+        //CloseUpgradeUI(); //Use this if you want UI to close after every upgrade
+        Debug.Log("New BPS: " + bps);
+        Debug.Log("New Range: " + targetingRange);
+        Debug.Log("New Cost: " + CalculateCost());
+        Debug.Log("New Damage: " + CalculateDamage());
     }
 
     private void OnDrawGizmos()
@@ -194,15 +219,8 @@ public class Turret : MonoBehaviour
         {
             if(!UIManager.Instance.IsHoveringUI())
             {
-                SelectTurret();
-                OpenUpgradeUI();
+                DisplayRange();
             }
         }
     }
-
-    private void SelectTurret()
-    {
-        selectedTurret = this;
-    }
-
 }
