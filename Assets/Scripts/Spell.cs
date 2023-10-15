@@ -11,18 +11,20 @@ public class Spell : MonoBehaviour
     private float cooldown = 1;
     private bool spellReady = true;
 
+    private bool buildModeLastFrame = false;
+
     void Update()
     {
-        if(!spellReady)
+        if (!spellReady)
         {
             cooldown -= Time.deltaTime;
-            if(cooldown <= 0)
+            if (cooldown <= 0)
             {
                 spellReady = true;
             }
         }
 
-        if(Input.GetMouseButtonDown(1) && spellReady)
+        if (Input.GetMouseButtonDown(1) && spellReady && !buildModeLastFrame)
         {
             if(LevelManager.Instance.currentMana >= costOfSpell)
             {
@@ -35,5 +37,6 @@ public class Spell : MonoBehaviour
                 Debug.Log("Not enough mana");
             }
         }
+        buildModeLastFrame = GridBuildingSystem.Instance.buildModeEnabled;
     }
 }

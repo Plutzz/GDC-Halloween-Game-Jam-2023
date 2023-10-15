@@ -51,6 +51,9 @@ TagManager:
   - name: Enemies
     uniqueID: 709491951
     locked: 0
+  - name: Towers
+    uniqueID: 2466755831
+    locked: 0
   - name: Rain
     uniqueID: 901209635
     locked: 0
@@ -59,9 +62,6 @@ TagManager:
     locked: 0
   - name: Spells
     uniqueID: 2351005179
-    locked: 0
-  - name: Towers
-    uniqueID: 2466755831
     locked: 0
   - name: BuildingSystem
     uniqueID: 3371684589

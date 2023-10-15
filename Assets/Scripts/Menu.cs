@@ -35,6 +35,16 @@ public class Menu : MonoBehaviour
         levelUI[0].text = Cannon.level.ToString();
         levelFillUI[0].fillAmount = Cannon.level / (float)Cannon.maxLevel;
 
+        if(Cannon.CalculateCost() > LevelManager.Instance.Currency)
+        {
+            Debug.Log("Can't Afford");
+            upgradeCostUI[0].color = Color.red;
+        }
+        else
+        {
+            upgradeCostUI[0].color = Color.black;
+        }
+
         // Flower (Type Turret)
         attackSpeedUI[1].text = Flower.bps.ToString("F2");
         lifetimeUI[1].text = Flower.lifetime.ToString();
@@ -43,6 +53,7 @@ public class Menu : MonoBehaviour
         upgradeCostUI[1].text = Flower.CalculateCost().ToString();
         levelUI[1].text = Flower.level.ToString();
         levelFillUI[1].fillAmount = Flower.level / (float)Flower.maxLevel;
+
 
     }
 
