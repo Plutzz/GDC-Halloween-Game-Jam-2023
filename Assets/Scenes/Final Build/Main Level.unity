@@ -432,6 +432,22 @@ PrefabInstance:
       propertyPath: surround.Array.data[4]
       value: 
       objectReference: {fileID: 737112139}
+    - target: {fileID: 4736416813018108913, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736416813018108913, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1361887540599322940, guid: 94a32b72086bd1747acb0a0f303722e7, type: 3}
+    - target: {fileID: 4736416813018108913, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1361887540599322940, guid: a8f519808e85933469b1ad7997d4387a, type: 3}
+    - target: {fileID: 4736416813018108913, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1361887540599322940, guid: 319bdff0fd43faf4798a1bc2eafaf3b6, type: 3}
     - target: {fileID: 4736416813018108916, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
       propertyPath: m_RootOrder
       value: 7

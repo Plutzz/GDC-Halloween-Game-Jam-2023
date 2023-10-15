@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     public EnemyEndBehavior endBehavior;
     public Animator Anim;
+    public float distanceErrorMargin = 0f;
 
     private Transform target;
     private int pathIndex = 0;
@@ -24,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         //checks distance to next path node
-        if (Vector2.Distance(target.position, transform.position) <= 0.1f)
+        if (Vector2.Distance(target.position, transform.position) <= distanceErrorMargin)
         {
             pathIndex++;
 
