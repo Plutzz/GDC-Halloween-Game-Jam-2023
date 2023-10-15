@@ -18149,6 +18149,7 @@ GameObject:
   - component: {fileID: 1344939891}
   - component: {fileID: 1344939892}
   - component: {fileID: 1344939893}
+  - component: {fileID: 1344939894}
   m_Layer: 0
   m_Name: Cursor Light
   m_TagString: Untagged
@@ -18329,6 +18330,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.000000002910383}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1344939894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344939888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5efb78d4e61944c81dcca74f9accb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearSpell: {fileID: 2923622600625958195, guid: c9ab9a0e0350ce9489c5891f7c18cdb4, type: 3}
 --- !u!1 &1392900189
 GameObject:
   m_ObjectHideFlags: 0

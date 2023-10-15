@@ -10,6 +10,7 @@ public class EnemyEndBehavior : MonoBehaviour
     private Renderer sr;
     //public float angle = 0f;
 
+    public bool spotted = false;
     public Vector3 centerOfRotation = new(-15, 5, 0);
     public GameObject bullet;
     public bool end = false;

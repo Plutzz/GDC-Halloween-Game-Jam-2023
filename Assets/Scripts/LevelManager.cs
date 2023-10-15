@@ -13,7 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     public int Currency;
     public int maxMana = 500;
     public int manaPerSecond = 5;
-    private int currentMana;
+    public int currentMana;
     private int manaRate = 1;
     private float manaCooldown = 0;
     public UnityEngine.UI.Image mana;
