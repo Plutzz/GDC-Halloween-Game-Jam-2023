@@ -8,7 +8,8 @@ public class PlayerHealth : DamageableEntity
     public int maxHp = 100;
     public Image health;
     public GameObject gameOverUI;
-    public bool invincible = false;
+    private bool invincible = false;
+    public AudioSource hitAudio;
     public float invincibleTimer = 1f;
 
     public static PlayerHealth Instance;
@@ -28,7 +29,12 @@ public class PlayerHealth : DamageableEntity
         if(currentHp > 0 && !invincible)
         {
             currentHp -= damage;
+            hitAudio.Play();
+
+            InvincibleIndicator.
+
             invincible = true;
+
             Debug.Log("Invincible");
 
             float fillvalue = Mathf.Clamp((float)currentHp/(float)maxHp, 0, maxHp);
@@ -43,7 +49,6 @@ public class PlayerHealth : DamageableEntity
             }
 
             StartCoroutine(Invincibililty());
-            Debug.Log("no longer invincible");
         }
     }
 
@@ -51,6 +56,7 @@ public class PlayerHealth : DamageableEntity
     {
         yield return new WaitForSeconds(invincibleTimer);
         invincible = false;
+        Debug.Log("no longer invincible");
     }
 
     protected override void OnDeath()
