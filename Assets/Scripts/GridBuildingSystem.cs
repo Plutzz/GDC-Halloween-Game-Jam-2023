@@ -64,7 +64,55 @@ public class GridBuildingSystem : MonoBehaviour
     private void Update()
     {
 
-        if (!buildModeEnabled)
+        // Build mode Button
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            BuildManager.Instance.SetSelectedTower(0);
+            SelectedTower = BuildManager.Instance.GetSelectedTower();
+            if (SelectedTower == null) return;
+
+            if (SelectedTower.Cost > LevelManager.Instance.currentMana)
+            {
+                Debug.Log("You can't afford this tower");
+                return;
+            }
+
+            initializeWithBuilding(SelectedTower.prefab);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            BuildManager.Instance.SetSelectedTower(1);
+            SelectedTower = BuildManager.Instance.GetSelectedTower();
+            if (SelectedTower == null) return;
+
+            if (SelectedTower.Cost > LevelManager.Instance.currentMana)
+            {
+                Debug.Log("You can't afford this tower");
+                return;
+            }
+
+            initializeWithBuilding(SelectedTower.prefab);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            BuildManager.Instance.SetSelectedTower(2);
+            SelectedTower = BuildManager.Instance.GetSelectedTower();
+            if (SelectedTower == null) return;
+
+            if (SelectedTower.Cost > LevelManager.Instance.currentMana)
+            {
+                Debug.Log("You can't afford this tower");
+                return;
+            }
+
+            initializeWithBuilding(SelectedTower.prefab);
+        }
+
+        //REAL
+
+        /*if (!buildModeEnabled)
         {
             // Build mode Button
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -111,7 +159,7 @@ public class GridBuildingSystem : MonoBehaviour
 
                 initializeWithBuilding(SelectedTower.prefab);
             }
-        }
+        }*/
 
 
 

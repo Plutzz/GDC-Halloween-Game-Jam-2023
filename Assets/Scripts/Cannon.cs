@@ -15,7 +15,9 @@ public class Cannon : BaseTurret
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject rangeDisplay;
+    [SerializeField] private GameObject cannonGraphics;
 
+    [SerializeField] private Sprite[] levelSprites;
 
 
     //Range that turret can target
@@ -46,7 +48,7 @@ public class Cannon : BaseTurret
     private float timeAlive;
 
     public static int level { get; private set; } = 1;
-    public static int maxLevel { get; private set; } = 5;
+    public static int maxLevel { get; private set; } = 3;
 
     protected override void Start()
     {
@@ -56,6 +58,8 @@ public class Cannon : BaseTurret
 
     private void Update()
     {
+        cannonGraphics.GetComponent<SpriteRenderer>().sprite = levelSprites[level - 1];
+
         if (!isActive) return;
 
         timeUntilFire += Time.deltaTime;

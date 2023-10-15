@@ -590,7 +590,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1828211465
-  m_SortingLayer: 7
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a8970825f8bcdd640a61a46d19a87d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -697,6 +697,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5584226705546987239, guid: 0dab5e2ed1df8f644a74baa8524b6a7a, type: 3}
   firingPoint: {fileID: 1586073725}
   rangeDisplay: {fileID: 2569822626739451031}
+  cannonGraphics: {fileID: 4229200748476971755}
+  levelSprites: []
 --- !u!212 &4020225419701033291
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -736,7 +738,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1828211465
-  m_SortingLayer: 7
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 730f8f123973fed4c809239e069c463e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
