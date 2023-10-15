@@ -15,11 +15,11 @@ public class DeathScreen : MonoBehaviour
 
     private void Start()
     {
-        timerText.SetActive(false);
-        timeLived.SetActive(true);
-        numKills.SetActive(true);
-        timeLived.GetComponent<TextMeshProUGUI>().text = Timer.timer.GetTime();
-        numKills.GetComponent<TextMeshProUGUI>().text = Enemy.numKills + " Kills";
+        // timerText.SetActive(false);
+        // timeLived.SetActive(true);
+        // numKills.SetActive(true);
+        // timeLived.GetComponent<TextMeshProUGUI>().text = Timer.timer.GetTime();
+        // numKills.GetComponent<TextMeshProUGUI>().text = Enemy.numKills + " Kills";
 
 
 

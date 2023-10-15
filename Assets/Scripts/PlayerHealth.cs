@@ -5,6 +5,7 @@ public class PlayerHealth : DamageableEntity
 {
     public int maxHp = 100;
     public Image health;
+    public GameObject gameOverUI;
 
     public static PlayerHealth Instance;
 
@@ -25,11 +26,16 @@ public class PlayerHealth : DamageableEntity
             currentHp -= damage;
         }
         
-        float fillvalue = (float)currentHp/(float)maxHp;
+        float fillvalue = Mathf.Clamp((float)currentHp/(float)maxHp, 0, maxHp);
 
         // Debug.Log(fillvalue);
 
         health.fillAmount = fillvalue;
+
+        if(currentHp <= 0)
+        {
+            gameOverUI.SetActive(true);
+        }
     }
 
 }
