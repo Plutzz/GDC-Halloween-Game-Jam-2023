@@ -498,6 +498,17 @@ Transform:
   m_Father: {fileID: 768247929}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &215681389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4736416813018108913, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
+  m_PrefabInstance: {fileID: 9413155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7d01efc92c1504ab0eb4692051553e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &228037451
 GameObject:
   m_ObjectHideFlags: 0
@@ -31346,7 +31357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &5862879163394970604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31361,7 +31372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 5862879164273881024}
   rounds: {fileID: 678384964}
-  enemySpawner: {fileID: 0}
+  enemySpawner: {fileID: 215681389}
 --- !u!222 &5862879164236802132
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31512,7 +31523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5862879164273881025
 RectTransform:
   m_ObjectHideFlags: 0
