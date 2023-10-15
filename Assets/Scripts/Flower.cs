@@ -74,6 +74,11 @@ public class Flower : BaseTurret
 
         timeAlive += Time.deltaTime;
 
+        if (!(lifetime < 0))
+        {
+            timerBar.fillAmount = 1 - (timeAlive / lifetime);
+        }
+
         if (!(lifetime < 0) && timeAlive > lifetime)
         {
             GridBuildingSystem.Instance.destroyBuilding(GetComponent<Building>());

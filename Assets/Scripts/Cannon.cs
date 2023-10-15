@@ -60,10 +60,15 @@ public class Cannon : BaseTurret
 
         timeUntilFire += Time.deltaTime;
 
+        
         rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
         rangeDisplay.GetComponent<Light2D>().pointLightOuterRadius = targetingRange;
 
         timeAlive += Time.deltaTime;
+        if(!(lifetime < 0))
+        {
+            timerBar.fillAmount = 1 - (timeAlive / lifetime);
+        }
 
         if (!(lifetime < 0) && timeAlive > lifetime)
         {
@@ -180,15 +185,7 @@ public class Cannon : BaseTurret
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
 
-    private void OnMouseEnter()
-    {
-        CustomCursor.Instance.setCursor(1);
-    }
 
-    private void OnMouseExit()
-    {
-        CustomCursor.Instance.setCursor(0);
-    }
 }
 
 
