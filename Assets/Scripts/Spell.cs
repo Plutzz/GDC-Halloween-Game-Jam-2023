@@ -14,7 +14,7 @@ public class Spell : MonoBehaviour
             if(LevelManager.Instance.currentMana >= costOfSpell)
             {
                 Instantiate(clearSpell, transform.position, transform.rotation);
-                LevelManager.Instance.currentMana -= costOfSpell;
+                LevelManager.Instance.SpendMana(costOfSpell);
             } else {
                 Debug.Log("Not enough mana");
             }

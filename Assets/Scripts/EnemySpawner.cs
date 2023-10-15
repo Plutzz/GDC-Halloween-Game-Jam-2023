@@ -6,7 +6,7 @@ using System.Transactions;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
@@ -22,12 +22,13 @@ public class EnemySpawner : MonoBehaviour
 
     private int currentWave = 1;
     private float timeSinceLastSpawn;
-    private int enemiesAlive;
+    public int enemiesAlive;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         onEnemyDestroy.AddListener(EnemyDestroyed);
     }
 

@@ -13,8 +13,8 @@ public class ClearCircle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Enemy"))
         {
+            EnemySpawner.Instance.enemiesAlive--;
             Destroy(other.gameObject);
-            //has to reduce enemies in enemyspawner to get next wave, make enemy spawner singleton?
         }
     }
 }
