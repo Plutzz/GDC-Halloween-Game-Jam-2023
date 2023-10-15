@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7014413318007353634}
-  moveSpeed: 20
+  moveSpeed: 15
   endBehavior: {fileID: -3182388863211686983}
   Anim: {fileID: 8970183275692551478}
   distanceErrorMargin: 0.2

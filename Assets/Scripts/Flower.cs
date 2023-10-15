@@ -28,7 +28,7 @@ public class Flower : BaseTurret
 
     //Bullets per second
     public static float bps { get; private set; }
-    private static float bpsBase = 10f;
+    private static float bpsBase = 5f;
     private static float bpsUpgradeFactor = 0.6f;
 
     //Damage Per Bullet
@@ -37,7 +37,7 @@ public class Flower : BaseTurret
     private static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
-    public static float lifetime { get; private set; } = 60f;
+    public static float lifetime { get; private set; } = 20f;
     public static float rotationSpeed = 500f;
 
     //Cost variables

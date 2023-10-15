@@ -34,7 +34,7 @@ public class Cannon : BaseTurret
     private static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
-    public static float lifetime { get; private set; } = 5f;
+    public static float lifetime { get; private set; } = 20f;
     private static float rotationSpeed = 500f;
 
     //Cost variables
