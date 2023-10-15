@@ -8,10 +8,13 @@ using UnityEngine.Rendering.Universal;
 public class Lightning : MonoBehaviour
 {
     public Ease ease;
+    public AudioSource audiodata;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            audiodata.Play();
             Flash();
         }
     }
