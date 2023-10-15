@@ -30210,7 +30210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ease: 0
-  audiodata: {fileID: 993409069}
+  audioData: {fileID: 0}
+  mask: {fileID: 0}
 --- !u!4 &2064448850
 Transform:
   m_ObjectHideFlags: 0

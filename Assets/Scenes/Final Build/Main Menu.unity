@@ -437,7 +437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -349}
+  m_AnchoredPosition: {x: 592, y: -349}
   m_SizeDelta: {x: 290, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203636268
@@ -1211,7 +1211,7 @@ RectTransform:
   m_GameObject: {fileID: 994932359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.05, y: 2.05, z: 2.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 475434355}
@@ -1242,37 +1242,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'controls:
-
-    - wasd to move
-
-    - lmb to interact
-
-    - rmb for aoe
-    spell
-
-    - lmb on towers in menu to place them
-
-
-    - defeat enemies using
-    your towers before they reach you.
-
-    - once enemies reach you, they will attack
-    you until you lose all your health.
-
-    - if enemies reach you, you can use
-    your aoe to remove them.
-
-    - placing towers and using aoe costs mana.
-
-    -
-    mana reacharges over time.
-
-    - you can upgrade your towers using coins collected
-    from killing enemies.
-
-    - towers don''t last forever and will die after a
-    short period of time.'
+  m_text: "controls:\r\nwasd to move\r\nlmb to interact\r\nrmb to cast \"expel\"\r\n\r\ntowers:\r\neliminate
+    enemies with towers\r\nspend mana to place towers\r\nupgrade towers with candy
+    corn dropped by enemies\r\nsome towers decay over time\r\n\r\n\u200Bmana:\r\nplacing
+    towers and casting \"expel\" depletes mana\r\nonce enemies reach the end, move
+    to dodge  attacks\u200B\r\ncast \"expel\" to demolish enemies"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}
   m_sharedMaterial: {fileID: 5547191598849509978, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}
