@@ -14,6 +14,7 @@ public class ClearCircle : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
+            //has to reduce enemies in enemyspawner to get next wave, make enemy spawner singleton?
         }
     }
 }

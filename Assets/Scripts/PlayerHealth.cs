@@ -34,7 +34,7 @@ public class PlayerHealth : DamageableEntity
 
         if(currentHp <= 0)
         {
-            gameOverUI.SetActive(true);
+            LevelControl.Instance.GameOver();
         }
     }
 

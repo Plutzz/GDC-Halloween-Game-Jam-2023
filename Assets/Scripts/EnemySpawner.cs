@@ -34,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartWave());
+        Debug.Log(currentWave);
     }
     private void Update()
     {
@@ -66,6 +67,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
+        Debug.Log(currentWave);
         StartCoroutine(StartWave());
     }
 
@@ -88,5 +90,10 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenWaves);
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
+    }
+
+    public int GetRounds()
+    {
+        return currentWave;
     }
 }
