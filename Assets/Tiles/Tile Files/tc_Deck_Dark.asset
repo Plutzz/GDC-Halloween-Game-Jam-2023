@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: tc_tiles4_16
+  m_Name: tc_Deck_Dark
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -399685946, guid: 153153940d34cda42aebaed6ed5c8ec1, type: 3}
-  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  m_Sprite: {fileID: 1858284900, guid: 153153940d34cda42aebaed6ed5c8ec1, type: 3}
+  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   m_Transform:
     e00: 1
     e01: 0

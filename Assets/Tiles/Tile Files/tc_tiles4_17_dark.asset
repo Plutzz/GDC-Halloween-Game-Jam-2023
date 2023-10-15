@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tc_tiles4_17_dark
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -500475401, guid: 153153940d34cda42aebaed6ed5c8ec1, type: 3}
-  m_Color: {r: 0.4716981, g: 0.46057314, b: 0.46057314, a: 1}
+  m_Color: {r: 0.5411765, g: 0.5411765, b: 0.5411765, a: 1}
   m_Transform:
     e00: 1
     e01: 0
