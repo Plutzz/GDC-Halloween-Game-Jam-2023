@@ -6,7 +6,7 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
     public GameObject clearSpell;
-    public int costOfSpell = 300;
+    public int costOfSpell = 200;
     public int spellCooldown = 1;
     private float cooldown = 1;
     private bool spellReady = true;
