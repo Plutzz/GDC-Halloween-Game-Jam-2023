@@ -33,7 +33,7 @@ public class Flower : BaseTurret
 
     //Damage Per Bullet
     public static int damage { get; private set; }
-    private static int damageBase = 5;
+    private static int damageBase = 2;
     private static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
@@ -42,7 +42,7 @@ public class Flower : BaseTurret
 
     //Cost variables
     private static float upgradeCostFactor = 0.8f;
-    private static int baseUpgradeCost = 1000;
+    private static int baseUpgradeCost = 10000;
 
     private Transform target;
     private float timeUntilFire;

@@ -23,7 +23,7 @@ public class Sniper : BaseTurret
 
     //Range that turret can target
     public static float targetingRange { get; private set; }
-    private static float targetingRangeBase = 5f;
+    private static float targetingRangeBase = 10f;
     private static float targetingRangeUpgradeFactor = 0.4f;
 
     //Bullets per second
@@ -37,12 +37,12 @@ public class Sniper : BaseTurret
     private static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
-    public static float lifetime { get; private set; } = 5f;
+    public static float lifetime { get; private set; } = 20f;
     private static float rotationSpeed = 500f;
 
     //Cost variables
     private static float upgradeCostFactor = 0.8f;
-    private static int baseUpgradeCost = 100;
+    private static int baseUpgradeCost = 10000;
 
     private Transform target;
     private float timeUntilFire;
