@@ -14,9 +14,14 @@ public class LevelControl : MonoBehaviour
         instance = this;
     }
 
-    public void ReturnToTitle()
+    public void ReturnToTitle ()
     {
         //PauseMenu.Instance.Resume();
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void ReloadScene ()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
