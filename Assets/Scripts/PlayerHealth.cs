@@ -31,7 +31,7 @@ public class PlayerHealth : DamageableEntity
             currentHp -= damage;
             hitAudio.Play();
 
-            InvincibleIndicator.
+            InvincibleIndicator.Instance.FadeCharacter();
 
             invincible = true;
 
