@@ -20,7 +20,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-    private int currentWave = 1;
+    private int currentWave = 0;
     private float timeSinceLastSpawn;
     public int enemiesAlive;
     private int enemiesLeftToSpawn;
@@ -67,7 +67,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         isSpawning = false;
         timeSinceLastSpawn = 0f;
-        currentWave++;
+        
         Debug.Log(currentWave);
         StartCoroutine(StartWave());
     }
@@ -89,6 +89,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private IEnumerator StartWave()
     {
         yield return new WaitForSeconds(timeBetweenWaves);
+        currentWave++;
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
     }

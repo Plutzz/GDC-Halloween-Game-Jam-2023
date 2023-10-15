@@ -202,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 948926317}
     - target: {fileID: 4736416813018108912, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
       propertyPath: manaPerSecond
-      value: 20
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4736416813018108912, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
       propertyPath: path.Array.size
@@ -19055,6 +19055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearSpell: {fileID: 2923622600625958195, guid: c9ab9a0e0350ce9489c5891f7c18cdb4, type: 3}
   costOfSpell: 300
+  spellCooldown: 1
 --- !u!1 &1392900189
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,17 +24,17 @@ public class PlayerHealth : DamageableEntity
         if(currentHp > 0)
         {
             currentHp -= damage;
-        }
-        
-        float fillvalue = Mathf.Clamp((float)currentHp/(float)maxHp, 0, maxHp);
 
-        // Debug.Log(fillvalue);
+            float fillvalue = Mathf.Clamp((float)currentHp/(float)maxHp, 0, maxHp);
 
-        health.fillAmount = fillvalue;
+            // Debug.Log(fillvalue);
 
-        if(currentHp <= 0)
-        {
-            LevelControl.Instance.GameOver();
+            health.fillAmount = fillvalue;
+
+            if(currentHp <= 0)
+            {
+                LevelControl.Instance.GameOver();
+            }
         }
     }
 
