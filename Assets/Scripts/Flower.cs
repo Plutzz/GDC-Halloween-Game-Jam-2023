@@ -7,25 +7,28 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine.Rendering.Universal;
 
-public class Cannon : BaseTurret
+public class Flower : BaseTurret
 {
     [Header("References")]
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemies;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firingPoint;
+    [SerializeField] private Transform[] firingPoints;
     [SerializeField] private GameObject rangeDisplay;
+    [SerializeField] private GameObject flowerGraphics;
+
+    [SerializeField] private Sprite[] levelSprites;
 
 
 
     //Range that turret can target
     public static float targetingRange { get; private set; }
     private static float targetingRangeBase = 5f;
-    private static float targetingRangeUpgradeFactor = 0.4f;
+    private static float targetingRangeUpgradeFactor = 0f;
 
     //Bullets per second
     public static float bps { get; private set; }
-    private static float bpsBase = 1f;
+    private static float bpsBase = 10f;
     private static float bpsUpgradeFactor = 0.6f;
 
     //Damage Per Bullet
@@ -34,8 +37,8 @@ public class Cannon : BaseTurret
     private static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
-    public static float lifetime { get; private set; } = 5f;
-    private static float rotationSpeed = 500f;
+    public static float lifetime { get; private set; } = 60f;
+    public static float rotationSpeed = 500f;
 
     //Cost variables
     private static float upgradeCostFactor = 0.8f;
@@ -46,7 +49,7 @@ public class Cannon : BaseTurret
     private float timeAlive;
 
     public static int level { get; private set; } = 1;
-    public static int maxLevel { get; private set; } = 5;
+    public static int maxLevel { get; private set; } = 3;
 
     protected override void Start()
     {
@@ -56,10 +59,16 @@ public class Cannon : BaseTurret
 
     private void Update()
     {
+
+        flowerGraphics.GetComponent<SpriteRenderer>().sprite = levelSprites[level - 1];
+
+
         if (!isActive) return;
 
         timeUntilFire += Time.deltaTime;
 
+
+        // Handle Graphics
         rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
         rangeDisplay.GetComponent<Light2D>().pointLightOuterRadius = targetingRange;
 
@@ -96,10 +105,13 @@ public class Cannon : BaseTurret
 
     private void Shoot()
     {
-        GameObject _bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-        TurretBullet bulletScript = _bullet.GetComponent<TurretBullet>();
-        bulletScript.SetDamage(damage);
-        bulletScript.SetTarget(target);
+        foreach (var firingPoint in firingPoints)
+        {
+            GameObject _bullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation);
+            FlowerBullet bulletScript = _bullet.GetComponent<FlowerBullet>();
+            bulletScript.SetDamage(damage);
+            bulletScript.SetTarget(target);
+        }
     }
 
 
@@ -123,10 +135,7 @@ public class Cannon : BaseTurret
 
     private void RotateTowardsTarget()
     {
-        float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
-
-        Quaternion _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
+        turretRotationPoint.Rotate(0f, 0f, rotationSpeed * Time.deltaTime, Space.Self);
     }
 
     public static void Upgrade()
