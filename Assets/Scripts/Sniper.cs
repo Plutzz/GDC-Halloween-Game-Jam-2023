@@ -28,12 +28,12 @@ public class Sniper : BaseTurret
 
     //Bullets per second
     public static float bps { get; private set; }
-    private static float bpsBase = 1f;
+    private static float bpsBase = 3f;
     private static float bpsUpgradeFactor = 0.6f;
 
     //Damage Per Bullet
     public static int damage { get; private set; }
-    private static int damageBase = 5;
+    private static int damageBase = 10;
     private static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
