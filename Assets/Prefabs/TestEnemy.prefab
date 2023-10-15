@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8970183275692551478}
   m_Layer: 6
   m_Name: TestEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1207222951
 MonoBehaviour:
@@ -117,12 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a789cc1a9e637745908e93696ba9092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 0
+  spotted: 0
   centerOfRotation: {x: -15, y: -5, z: 0}
   bullet: {fileID: 7128646458143444606, guid: b977330518bc27e4ab93626176f72aab, type: 3}
   end: 0
-  rotationRadius: 7
-  angularSpeed: 100
+  speed: 2
   fireRate: 4
   fireCooldown: 4
 --- !u!212 &4934394621206285506
