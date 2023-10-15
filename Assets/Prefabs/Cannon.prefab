@@ -365,7 +365,7 @@ MonoBehaviour:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 1, y: 1, z: 1}
   Name: Basic Turret
-  Cost: 100
+  Cost: 50
   prefab: {fileID: 4473707389639359131}
 --- !u!58 &3173246887599490486
 CircleCollider2D:
@@ -444,7 +444,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1828211465
   m_SortingLayer: 7
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 730f8f123973fed4c809239e069c463e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

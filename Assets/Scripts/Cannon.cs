@@ -35,7 +35,7 @@ public class Cannon : MonoBehaviour
     private static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
-    public static float lifetime { get; private set; } = 60f;
+    public static float lifetime { get; private set; } = 5f;
     private static float rotationSpeed = 500f;
 
     //Cost variables
@@ -71,6 +71,7 @@ public class Cannon : MonoBehaviour
 
         if (!(lifetime < 0) && timeAlive > lifetime)
         {
+            GridBuildingSystem.Instance.destroyBuilding(GetComponent<Building>());
             Destroy(gameObject);
         }
 

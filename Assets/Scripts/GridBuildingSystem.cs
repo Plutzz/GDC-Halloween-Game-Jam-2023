@@ -16,6 +16,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class GridBuildingSystem : MonoBehaviour
 {
     public static GridBuildingSystem Instance;
+    public Dictionary<Vector3Int, Building> BuildingDictionary;
 
     public GridLayout gridLayout;
     public Tilemap mainTilemap;
@@ -48,6 +49,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        BuildingDictionary = new Dictionary<Vector3Int, Building>();
     }
     private void Start()
     {
@@ -71,7 +73,7 @@ public class GridBuildingSystem : MonoBehaviour
 
                 if (SelectedTower == null) return;
 
-                if(SelectedTower.Cost > LevelManager.Instance.Currency)
+                if (SelectedTower.Cost > LevelManager.Instance.currentMana)
                 {
                     Debug.Log("You can't afford this tower");
                     return;
@@ -169,6 +171,12 @@ public class GridBuildingSystem : MonoBehaviour
         followBuilding();
     }
 
+    public void destroyBuilding(Building buildingToDestroy)
+    {
+        setTilesBlock(buildingToDestroy.area, TileType.white, mainTilemap);
+        BuildingDictionary.Remove(buildingToDestroy.area.position);
+    }
+
     // Clears area where building previously was
     private void clearArea()
     {
@@ -246,8 +254,9 @@ public class GridBuildingSystem : MonoBehaviour
         setBuildMode(false);
         rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 1f);
         tempBuilding.GetComponent<Cannon>().isActive = true;
+        BuildingDictionary.Add(tempBuilding.area.position, tempBuilding);
         tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
-        LevelManager.Instance.SpendCurrency(SelectedTower.Cost);
+        LevelManager.Instance.SpendMana(SelectedTower.Cost);
         tempBuilding.place();
     }
 
