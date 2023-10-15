@@ -1244,7 +1244,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "controls:\r\nwasd to move\r\nlmb to interact\r\nrmb to cast \"expel\"\r\n\r\ntowers:\r\neliminate
     enemies with towers\r\nspend mana to place towers\r\nupgrade towers with candy
-    corn dropped by enemies\r\nsome towers decay over time\r\n\r\n\u200Bmana:\r\nplacing
+    corn dropped by enemies\r\ntowers decay over time\r\n\r\n\u200Bmana:\r\nplacing
     towers and casting \"expel\" depletes mana\r\nonce enemies reach the end, move
     to dodge  attacks\u200B\r\ncast \"expel\" to demolish enemies"
   m_isRightToLeft: 0
@@ -3848,7 +3848,7 @@ SortingGroup:
   m_GameObject: {fileID: 1712903786}
   m_Enabled: 1
   m_SortingLayerID: 901209635
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
 --- !u!199 &1712903788
 ParticleSystemRenderer:
