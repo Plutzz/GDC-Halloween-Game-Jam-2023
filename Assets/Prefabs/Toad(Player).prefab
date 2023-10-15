@@ -226,6 +226,9 @@ MonoBehaviour:
   currentHp: 0
   maxHp: 100
   health: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  hitAudio: {fileID: 0}
+  invincibleTimer: 1
 --- !u!1 &6722418320421192561
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +240,7 @@ GameObject:
   - component: {fileID: 6722418320421192560}
   - component: {fileID: 6722418320421192562}
   - component: {fileID: 6722418320421192563}
+  - component: {fileID: 1204058061}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -320,7 +324,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1768071903
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 10
   m_Sprite: {fileID: -1217720298, guid: b80deec2416803e42bd8eb171550dc14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -333,3 +337,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1204058061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722418320421192561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c88388679b59148ab34afcf0c38703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6722418320421192563}

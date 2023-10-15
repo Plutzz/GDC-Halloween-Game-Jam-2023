@@ -39,7 +39,7 @@ public class Cannon : BaseTurret
 
     //Cost variables
     private static float upgradeCostFactor = 0.8f;
-    private static int baseUpgradeCost = 100;
+    private static int baseUpgradeCost = 1000;
 
     private Transform target;
     private float timeUntilFire;
