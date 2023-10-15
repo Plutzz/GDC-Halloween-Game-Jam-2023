@@ -19,6 +19,7 @@ public class Turret : MonoBehaviour
 
 
     [Header("Attribute")]
+    [SerializeField] private float lifetime = 60f;
     [SerializeField] private float rotationSpeed = 500f;
     [SerializeField] private float targetingRange;
     [SerializeField] private float targetingRangeUpgradeFactor = 0.4f;
@@ -34,8 +35,9 @@ public class Turret : MonoBehaviour
     private static Turret selectedTurret;
     private Transform target;
     private float timeUntilFire;
+    private float timeAlive;
 
-    private int level = 1;
+    private static int level = 1;
 
     private void Start()
     {
@@ -51,6 +53,13 @@ public class Turret : MonoBehaviour
     private void Update()
     {
         if (!canFire) return;
+
+        timeAlive += Time.deltaTime;
+
+        if (!(lifetime < 0) && timeAlive > lifetime)   
+        {
+            Destroy(gameObject);
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
