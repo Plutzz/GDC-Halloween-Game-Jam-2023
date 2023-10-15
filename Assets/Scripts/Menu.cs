@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Menu : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] rangeUI;
     [SerializeField] TextMeshProUGUI[] damageUI;
     [SerializeField] TextMeshProUGUI[] upgradeCostUI;
+    [SerializeField] TextMeshProUGUI[] levelUI;
+    [SerializeField] Image[] levelFillUI;
 
 
     private void OnGUI()
@@ -29,6 +32,8 @@ public class Menu : MonoBehaviour
         rangeUI[0].text = Cannon.targetingRange.ToString("F2");
         damageUI[0].text = Cannon.damage.ToString();
         upgradeCostUI[0].text = Cannon.CalculateCost().ToString();
+        levelUI[0].text = Cannon.level.ToString();
+        levelFillUI[0].fillAmount = Cannon.level / 5f;
         
     }
 
