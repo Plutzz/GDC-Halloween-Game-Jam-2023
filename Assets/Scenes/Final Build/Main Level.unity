@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 4736416813018108913, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
       propertyPath: enemyPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 1361887540599322940, guid: a8f519808e85933469b1ad7997d4387a, type: 3}
+      objectReference: {fileID: 1361887540599322940, guid: 94a32b72086bd1747acb0a0f303722e7, type: 3}
     - target: {fileID: 4736416813018108913, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
       propertyPath: enemyPrefabs.Array.data[2]
       value: 
@@ -29923,6 +29923,22 @@ PrefabInstance:
     - target: {fileID: 5735147100508231522, guid: 77f5699c5845c3c49bcd84216bb54c1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735147100508231523, guid: 77f5699c5845c3c49bcd84216bb54c1b, type: 3}
+      propertyPath: m_CellGap.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735147100508231523, guid: 77f5699c5845c3c49bcd84216bb54c1b, type: 3}
+      propertyPath: m_CellGap.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735147100508231523, guid: 77f5699c5845c3c49bcd84216bb54c1b, type: 3}
+      propertyPath: m_CellSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735147100508231523, guid: 77f5699c5845c3c49bcd84216bb54c1b, type: 3}
+      propertyPath: m_CellSize.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5735147100623174601, guid: 77f5699c5845c3c49bcd84216bb54c1b, type: 3}
       propertyPath: m_LocalPosition.x
