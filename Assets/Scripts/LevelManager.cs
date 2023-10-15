@@ -70,7 +70,6 @@ public class LevelManager : Singleton<LevelManager>
 
     public bool SpendMana(int amount) 
     {
-        Debug.Log("pressed mana button");
         if(amount <= currentMana) 
         {
             //Buy Item
