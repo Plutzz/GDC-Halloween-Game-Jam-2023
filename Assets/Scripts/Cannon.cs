@@ -141,8 +141,6 @@ public class Cannon : BaseTurret
 
         LevelManager.Instance.SpendCurrency(CalculateCost());
 
-        Debug.Log("Upgrade");
-
         level++;
 
 
@@ -173,10 +171,6 @@ public class Cannon : BaseTurret
         bps = CalculateBPS();
         targetingRange = CalculateRange();
         damage = CalculateDamage();
-        Debug.Log("New BPS: " + bps);
-        Debug.Log("New Range: " + targetingRange);
-        Debug.Log("New Cost: " + CalculateCost());
-        Debug.Log("New Damage: " + CalculateDamage());
     }
 
     private void OnDrawGizmos()
