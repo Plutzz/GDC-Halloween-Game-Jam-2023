@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillSpell : MonoBehaviour
+public class Spell : MonoBehaviour
 {
     public GameObject clearSpell;
     public int costOfSpell = 300;
