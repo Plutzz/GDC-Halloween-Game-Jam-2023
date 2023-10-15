@@ -45,20 +45,16 @@ public class Cannon : MonoBehaviour
     private Transform target;
     private float timeUntilFire;
     private float timeAlive;
-    private Button upgradeButton;
 
-    private static int level = 1;
+    public static int level { get; private set; } = 1;
 
     private void Start()
     {
         isActive = false;
 
-        upgradeButton = UpgradeButton.Instance.GetComponent<Button>();
-
         CalculateAttributes();
 
         rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
-        upgradeButton.onClick.AddListener(Upgrade);
     }
 
     private void Update()
