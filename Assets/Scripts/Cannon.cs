@@ -179,8 +179,8 @@ public class Cannon : BaseTurret
 
     private void OnDrawGizmos()
     {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        //Handles.color = Color.cyan;
+       //Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
 
 

@@ -5,12 +5,9 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 // This script is the main logic of the grid building system
 public class GridBuildingSystem : MonoBehaviour
