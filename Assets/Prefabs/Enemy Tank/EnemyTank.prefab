@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotted: 0
   centerOfRotation: {x: -15, y: -5, z: 0}
-  bullet: {fileID: 7128646458143444606, guid: 951eee6e2a26db345aa9a2c27ad07bb2, type: 3}
+  bullet: {fileID: 7128646458143444606, guid: 62fa3c5ec9f1111478e92bd54afcb1d4, type: 3}
   end: 0
   speed: 2
   fireRate: 4
