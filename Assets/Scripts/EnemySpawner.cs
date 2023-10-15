@@ -38,7 +38,6 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private void Start()
     {
         StartCoroutine(StartWave());
-        currentRoundIndicator.text = currentWave.ToString();
     }
     private void Update()
     {

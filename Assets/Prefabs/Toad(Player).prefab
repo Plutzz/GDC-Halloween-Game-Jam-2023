@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
-  maxHp: 100
+  maxHp: 50
   health: {fileID: 0}
   gameOverUI: {fileID: 0}
   hitAudio: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 6722418320421192560}
   - component: {fileID: 6722418320421192562}
   - component: {fileID: 6722418320421192563}
-  - component: {fileID: 1204058061}
+  - component: {fileID: 1486990017}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -337,7 +337,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1204058061
+--- !u!114 &1486990017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
