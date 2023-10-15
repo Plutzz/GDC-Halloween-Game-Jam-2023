@@ -15,7 +15,6 @@ public class PlayerHealth : DamageableEntity
 
     private void Start()
     {
-        GetComponent<Slider>();
         currentHp = maxHp;
     }
 

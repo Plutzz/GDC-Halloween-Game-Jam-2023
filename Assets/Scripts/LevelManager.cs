@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -8,10 +10,29 @@ public class LevelManager : Singleton<LevelManager>
     public Transform[] path;
 
     public int Currency;
+    public int maxMana = 500;
+    public int manaPerSecond = 5;
+    private int currentMana;
+    private int manaRate = 1;
+    private float manaCooldown = 0;
+    public UnityEngine.UI.Image mana;
+
 
     private void Start()
     {
         Currency = 500;
+        currentMana = maxMana;
+    }
+
+    void Update ()
+    {
+        if(currentMana < maxMana)
+        {
+            ManaRegen();
+            float fillvalue = (float)currentMana/(float)maxMana;
+
+            mana.fillAmount = fillvalue;
+        }
     }
 
     public void IncreaseCurrency(int amount)
@@ -30,6 +51,38 @@ public class LevelManager : Singleton<LevelManager>
         else
         {
             Debug.Log("Insufficent Currency");
+            return false;
+        }
+    }
+
+    public void ManaRegen ()
+    {
+        manaCooldown -= Time.deltaTime;
+
+        if(manaCooldown <= 0)
+        {
+            currentMana = Mathf.Clamp(currentMana + manaPerSecond, 0, maxMana);
+            Debug.Log(currentMana);
+            manaCooldown = manaRate;
+        }
+    }
+
+    public bool SpendMana(int amount) 
+    {
+        Debug.Log("pressed mana button");
+        if(amount <= currentMana) 
+        {
+            //Buy Item
+            currentMana -= amount;
+        
+            float fillvalue = (float)currentMana/(float)maxMana;
+
+            mana.fillAmount = fillvalue;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Insufficent Mana");
             return false;
         }
     }
