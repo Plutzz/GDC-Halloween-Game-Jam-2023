@@ -14,7 +14,7 @@ public class LevelControl : MonoBehaviour
    
     private void Awake()
     {
-        Instance= this;
+        Instance = this;
     }
 
     public void ReturnToTitle ()
