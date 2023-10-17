@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4736416813018108916}
-  - component: {fileID: 4736416813018108918}
   - component: {fileID: 4736416813018108913}
   - component: {fileID: 4736416813018108912}
   m_Layer: 0
@@ -34,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4736416813018108918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4736416813018108917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9f7d31424a7a04297628e2b2d0ab81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursors:
-  - {fileID: 2800000, guid: de9566ace5d99e44eaa9bd2c32de4b73, type: 3}
-  - {fileID: 2800000, guid: 48eb1cce7794ce64a952524cbe056626, type: 3}
 --- !u!114 &4736416813018108913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +54,7 @@ MonoBehaviour:
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
   enemiesPerSecondCap: 15
+  currentRoundIndicator: {fileID: 0}
   enemiesAlive: 0
 --- !u!114 &4736416813018108912
 MonoBehaviour:
@@ -117,6 +102,6 @@ MonoBehaviour:
   - {fileID: 0}
   Currency: 0
   maxMana: 500
-  manaPerSecond: 20
+  manaPerSecond: 10
   currentMana: 0
   mana: {fileID: 0}

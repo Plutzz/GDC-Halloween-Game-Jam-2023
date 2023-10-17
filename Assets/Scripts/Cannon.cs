@@ -41,7 +41,7 @@ public class Cannon : BaseTurret
 
     //Cost variables
     private static float upgradeCostFactor = 0.8f;
-    private static int baseUpgradeCost = 1000;
+    private static int baseUpgradeCost = 10000;
 
     private Transform target;
     private float timeUntilFire;
@@ -179,7 +179,7 @@ public class Cannon : BaseTurret
 
     private void OnDrawGizmos()
     {
-        //Handles.color = Color.cyan;
+       //Handles.color = Color.cyan;
        //Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
 

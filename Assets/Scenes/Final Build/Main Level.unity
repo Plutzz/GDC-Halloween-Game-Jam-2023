@@ -139,10 +139,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 948926317}
     - target: {fileID: 4736416813018108912, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
-      propertyPath: manaPerSecond
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4736416813018108912, guid: 51dddbe75e930524e9640d7f829299b4, type: 3}
       propertyPath: path.Array.data[0]
       value: 
       objectReference: {fileID: 1264048717}
@@ -29439,7 +29435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!73398921 &1845071027
 VFXRenderer:
   serializedVersion: 1
@@ -29448,7 +29444,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845071026}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -29499,6 +29495,9 @@ VisualEffect:
       m_Array:
       - m_Value: 1.5
         m_Name: Sphere_radius
+        m_Overridden: 1
+      - m_Value: 1000
+        m_Name: FogAmount
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -29645,6 +29644,10 @@ PrefabInstance:
     - target: {fileID: 6469889383199874303, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643457984566400884, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
+      propertyPath: m_text
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6713853921812920242, guid: 71a7f24cd57b879439f92d9e31d75d9c, type: 3}
       propertyPath: m_Sprite
