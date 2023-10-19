@@ -161,7 +161,6 @@ public class BaseTurret : MonoBehaviour
     // NEED TO MAKE A NEW CALCULATE ATTRIBUTES METHOD IN INHERITED CLASSES
     protected virtual void CalculateAttributes()
     {
-        Debug.Log("Base Calculate Call");
         bps = CalculateBPS();
         targetingRange = CalculateRange();
         damage = CalculateDamage();

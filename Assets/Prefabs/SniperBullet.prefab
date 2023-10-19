@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5584226705546987238}
   - component: {fileID: 5420295729461322053}
   - component: {fileID: -2569001467552645793}
-  - component: {fileID: -5733565812315407555}
+  - component: {fileID: 7787472313916749350}
   m_Layer: 8
   m_Name: SniperBullet
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1828211465
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2046056275, guid: 0f5b80ee1345d064682136ca8c70a0eb, type: 3}
+  m_Sprite: {fileID: 1495794081, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-5733565812315407555
+--- !u!114 &7787472313916749350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,9 +133,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5584226705546987239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e887a0c5a701034c8ff9ad3e5d58aa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 70e1825ee62ac05498dcfde638b95af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5420295729461322053}
-  bulletSpeed: 30
+  bulletSpeed: 10
   damage: 10
