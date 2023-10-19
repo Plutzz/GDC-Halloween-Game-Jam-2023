@@ -9,14 +9,33 @@ using UnityEngine.Rendering.Universal;
 
 public class Cannon : BaseTurret
 {
-
-    private void OnDrawGizmos()
+    protected override void Start()
     {
-       //Handles.color = Color.cyan;
-       //Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        base.Start();
+
+        //SET BASE CANNON VALUES
+        //---------------------------
+
+        // Cost
+        baseUpgradeCost = 500;
+        upgradeCostFactor = 0.8f;
+
+        // Bullets Per Second
+        bpsBase = 1f;
+        bpsUpgradeFactor = 0.6f;
+
+        // Damage
+        damageBase = 5;
+        damageUpgradeFactor = 1;
+
+        // Range
+        targetingRangeBase = 5f;
+        targetingRangeUpgradeFactor = 0.6f;
+
+        // Other Varibles
+        lifetime = 20;
+        rotationSpeed = 500;
     }
-
-
 }
 
 

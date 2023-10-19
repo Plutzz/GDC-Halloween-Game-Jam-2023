@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -37,12 +38,12 @@ public class BaseTurret : MonoBehaviour
     protected static float damageUpgradeFactor = 0.3f;
 
     //Misc Stats
-    public static float lifetime { get; private set; } = 20f;
-    protected static float rotationSpeed = 500f;
+    public static float lifetime { get; protected set; } = 20f;
+    public static float rotationSpeed { get; protected set; } 
 
     //Cost variables
     protected static float upgradeCostFactor = 0.8f;
-    protected static int baseUpgradeCost = 10000;
+    protected static int baseUpgradeCost = 1000;
 
     public static int level { get; private set; } = 1;
     public static int maxLevel { get; private set; } = 3;
@@ -52,7 +53,7 @@ public class BaseTurret : MonoBehaviour
 
     protected float timeAlive;
 
-
+    protected static event Action onUpgrade;
 
     public bool isActive;
     public Image timerBar;
@@ -62,6 +63,9 @@ public class BaseTurret : MonoBehaviour
     protected virtual void Start()
     {
         isActive = false;
+
+        onUpgrade += CalculateAttributes;
+
         CalculateAttributes();
     }
 
@@ -115,7 +119,7 @@ public class BaseTurret : MonoBehaviour
 
     
     //Make a default bullet script
-    private void Shoot()
+    protected virtual void Shoot()
     {
         GameObject _bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         TurretBullet bulletScript = _bullet.GetComponent<TurretBullet>();
@@ -132,9 +136,7 @@ public class BaseTurret : MonoBehaviour
 
         level++;
 
-
-        // if num turrets > 0, call onUpgrade (prevents error)
-        CalculateAttributes();
+        onUpgrade();
     }
 
     public static int CalculateCost()
@@ -155,14 +157,17 @@ public class BaseTurret : MonoBehaviour
     {
         return targetingRangeBase * Mathf.Pow(level, targetingRangeUpgradeFactor);
     }
-    private static void CalculateAttributes()
+
+    // NEED TO MAKE A NEW CALCULATE ATTRIBUTES METHOD IN INHERITED CLASSES
+    protected virtual void CalculateAttributes()
     {
+        Debug.Log("Base Calculate Call");
         bps = CalculateBPS();
         targetingRange = CalculateRange();
         damage = CalculateDamage();
     }
 
-    private void RotateTowardsTarget()
+    protected virtual void RotateTowardsTarget()
     {
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
 
@@ -185,7 +190,7 @@ public class BaseTurret : MonoBehaviour
         }
     }
 
-
+    /*
     private void OnMouseEnter()
     {
         CustomCursor.Instance.setCursor(1);
@@ -195,4 +200,5 @@ public class BaseTurret : MonoBehaviour
     {
         CustomCursor.Instance.setCursor(0);
     }
+    */
 }

@@ -688,8 +688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6189ff04e558c7e4690dd4550f6345b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
-  timerBar: {fileID: 8174130494291494695}
   turretRotationPoint: {fileID: 527339003}
   enemies:
     serializedVersion: 2
@@ -697,11 +695,13 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5584226705546987239, guid: 0dab5e2ed1df8f644a74baa8524b6a7a, type: 3}
   firingPoint: {fileID: 1586073725}
   rangeDisplay: {fileID: 2569822626739451031}
-  cannonGraphics: {fileID: 4229200748476971755}
+  graphics: {fileID: 4229200748476971755}
   levelSprites:
   - {fileID: -703932087, guid: 3603f548d10e8c649a25aa08fc5da58b, type: 3}
   - {fileID: 1606485666, guid: 3603f548d10e8c649a25aa08fc5da58b, type: 3}
   - {fileID: 35835613, guid: 3603f548d10e8c649a25aa08fc5da58b, type: 3}
+  isActive: 0
+  timerBar: {fileID: 8174130494291494695}
 --- !u!212 &4020225419701033291
 SpriteRenderer:
   m_ObjectHideFlags: 0

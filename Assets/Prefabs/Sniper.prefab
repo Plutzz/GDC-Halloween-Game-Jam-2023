@@ -687,8 +687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6189350d28e67546806692dfb5555f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
-  timerBar: {fileID: 8174130494291494695}
   turretRotationPoint: {fileID: 527339003}
   enemies:
     serializedVersion: 2
@@ -696,11 +694,13 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5584226705546987239, guid: fba24cfd21c7e6e4e9f5dc4a237c524c, type: 3}
   firingPoint: {fileID: 1586073725}
   rangeDisplay: {fileID: 2569822626739451031}
-  sniperGraphics: {fileID: 4229200748476971755}
+  graphics: {fileID: 4229200748476971755}
   levelSprites:
   - {fileID: -484259977, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
   - {fileID: 132605874, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
   - {fileID: -1049350202, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
+  isActive: 0
+  timerBar: {fileID: 8174130494291494695}
 --- !u!1 &6526355511326167452
 GameObject:
   m_ObjectHideFlags: 0
