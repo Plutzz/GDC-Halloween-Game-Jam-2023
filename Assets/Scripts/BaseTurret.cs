@@ -125,6 +125,7 @@ public class BaseTurret : MonoBehaviour
         TurretBullet bulletScript = _bullet.GetComponent<TurretBullet>();
         bulletScript.SetDamage(damage);
         bulletScript.SetTarget(target);
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.CannonAttack);
     }
 
     public static void Upgrade()

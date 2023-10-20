@@ -9,7 +9,6 @@ public class PlayerHealth : DamageableEntity
     public Image health;
     public GameObject gameOverUI;
     private bool invincible = false;
-    public AudioSource hitAudio;
     public float invincibleTimer = 1f;
 
     public static PlayerHealth Instance;
@@ -29,7 +28,8 @@ public class PlayerHealth : DamageableEntity
         if(currentHp > 0 && !invincible)
         {
             currentHp -= damage;
-            hitAudio.Play();
+
+            SoundManager.Instance.PlaySound(SoundManager.Sounds.Hit);
 
             InvincibleIndicator.Instance.FadeCharacter();
 

@@ -72,7 +72,7 @@ public class EnemyEndBehavior : MonoBehaviour
         }
     }
 
-    public void ReachedEnd ()
+    public void ReachedEnd()
     {
         gameObject.layer = LayerMask.NameToLayer("Projectiles");
         sr.sortingLayerID = SortingLayer.NameToID("Projectiles");

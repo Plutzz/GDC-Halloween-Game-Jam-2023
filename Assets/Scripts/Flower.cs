@@ -16,7 +16,6 @@ public class Flower : BaseTurret
     {
         base.Start();
         CalculateAttributes();
-
         //SET BASE CANNON VALUES
         //---------------------------
 
