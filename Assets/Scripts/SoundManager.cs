@@ -65,6 +65,7 @@ public class SoundManager : Singleton<SoundManager>
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(_sound).audioClip;
         audioSource.volume = GetAudioClip(_sound).volume;
+        audioSource.priority = 50;
         audioSource.PlayOneShot(audioSource.clip);
         Destroy(soundGameObject, audioSource.clip.length);
     }
