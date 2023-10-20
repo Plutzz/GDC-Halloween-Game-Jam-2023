@@ -12558,7 +12558,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -21622,7 +21622,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 20b42b699b728c34aa48521d541d323f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 509709de0f59d7d439400c0e995a92d6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.389
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -29604,13 +29604,14 @@ MonoBehaviour:
   soundAudioClipsArray:
   - sound: 0
     audioClip: {fileID: 8300000, guid: a939a203393a2a040a4be9b32d6b37fe, type: 3}
-    volume: 1
+    volume: 0.225
   - sound: 2
     audioClip: {fileID: 8300000, guid: fe57d05e0113bf442af101b291943a84, type: 3}
     volume: 0.151
   - sound: 1
     audioClip: {fileID: 8300000, guid: fa7379dbde22c5341b57aa69b31baebd, type: 3}
     volume: 0.582
+  maxAudioSources: 3
 --- !u!1001 &1945072594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30006,7 +30007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232048d6bc90c664196be67a5834dfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ease: 0
   mask: {fileID: 2064448850}
 --- !u!331 &2064448850
 SpriteMask:
