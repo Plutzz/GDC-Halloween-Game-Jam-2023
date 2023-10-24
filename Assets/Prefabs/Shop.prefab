@@ -905,7 +905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25.416668, y: 13.125}
+  m_AnchoredPosition: {x: 35.6, y: 13.125}
   m_SizeDelta: {x: 85.5, y: 24.751}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2694620186673854682
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: flo wer
+  m_text: flo were t te
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}
   m_sharedMaterial: {fileID: 5547191598849509978, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}
@@ -1251,7 +1251,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25.416668, y: 13.125}
+  m_AnchoredPosition: {x: 28, y: 12.9}
   m_SizeDelta: {x: 85.5, y: 24.751}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7140286586818569096
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sn iper
+  m_text: seedsnap
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}
   m_sharedMaterial: {fileID: 5547191598849509978, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}
@@ -3261,7 +3261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25.416668, y: 13.125}
+  m_AnchoredPosition: {x: 27.9, y: 13}
   m_SizeDelta: {x: 85.5, y: 24.751}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6713853922184974135
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: cannon
+  m_text: lobspike
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}
   m_sharedMaterial: {fileID: 5547191598849509978, guid: b86eacb2d89c98d4aa70dd6163b1c334, type: 2}

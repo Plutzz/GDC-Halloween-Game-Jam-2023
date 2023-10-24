@@ -9,106 +9,42 @@ using UnityEngine.Rendering.Universal;
 
 public class Flower : BaseTurret
 {
-    [Header("References")]
-    [SerializeField] private Transform turretRotationPoint;
-    [SerializeField] private LayerMask enemies;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform[] firingPoints;
-    [SerializeField] private GameObject rangeDisplay;
-    [SerializeField] private GameObject flowerGraphics;
-
-    [SerializeField] private Sprite[] levelSprites;
-
-
-
-    //Range that turret can target
-    public static float targetingRange { get; private set; }
-    private static float targetingRangeBase = 5f;
-    private static float targetingRangeUpgradeFactor = 0f;
-
-    //Bullets per second
-    public static float bps { get; private set; }
-    private static float bpsBase = 5f;
-    private static float bpsUpgradeFactor = 0.6f;
-
-    //Damage Per Bullet
-    public static int damage { get; private set; }
-    private static int damageBase = 2;
-    private static float damageUpgradeFactor = 0.3f;
-
-    //Misc Stats
-    public static float lifetime { get; private set; } = 20f;
-    public static float rotationSpeed = 500f;
-
-    //Cost variables
-    private static float upgradeCostFactor = 0.8f;
-    private static int baseUpgradeCost = 1000;
-
-    private Transform target;
-    private float timeUntilFire;
-    private float timeAlive;
-
-    public static int level { get; private set; } = 1;
-    public static int maxLevel { get; private set; } = 3;
-
+    private static float rotationSpeedBase = 500f;
+    private static float rotationUpgradeFactor = 0.3f;
     protected override void Start()
     {
         base.Start();
         CalculateAttributes();
+        //SET BASE CANNON VALUES
+        //---------------------------
+
+        // Cost
+        baseUpgradeCost = 500;
+        upgradeCostFactor = 0.8f;
+
+        // Bullets Per Second
+        bpsBase = 1f;
+        bpsUpgradeFactor = 0.6f;
+
+        // Damage
+        damageBase = 5;
+        damageUpgradeFactor = 1;
+        
+        // Rotation Speed
+        rotationSpeedBase = 500f;
+        rotationUpgradeFactor = 0.3f;
+
+        // Range
+        targetingRangeBase = 5f;
+        targetingRangeUpgradeFactor = 0.6f;
+
+        // Other Varibles
+        lifetime = 20;
+        
     }
 
-    private void Update()
-    {
-
-        flowerGraphics.GetComponent<SpriteRenderer>().sprite = levelSprites[level - 1];
-
-
-        if (!isActive) return;
-
-        timeUntilFire += Time.deltaTime;
-
-
-        // Handle Graphics
-        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
-        rangeDisplay.GetComponent<Light2D>().pointLightOuterRadius = targetingRange;
-
-        timeAlive += Time.deltaTime;
-
-        if (!(lifetime < 0))
-        {
-            timerBar.fillAmount = 1 - (timeAlive / lifetime);
-        }
-
-        if (!(lifetime < 0) && timeAlive > lifetime)
-        {
-            GridBuildingSystem.Instance.destroyBuilding(GetComponent<Building>());
-            Destroy(gameObject);
-        }
-
-        if (target == null)
-        {
-            FindTarget();
-            return;
-        }
-
-        RotateTowardsTarget();
-
-        if (!CheckTargetIsInRange())
-        {
-            target = null;
-        }
-        else
-        {
-
-            if (timeUntilFire >= 1f / bps)
-            {
-                Shoot();
-                timeUntilFire = 0f;
-            }
-        }
-    }
-
-    private void Shoot()
+    protected override void Shoot()
     {
         foreach (var firingPoint in firingPoints)
         {
@@ -119,83 +55,21 @@ public class Flower : BaseTurret
         }
     }
 
-
-
-    private void FindTarget()
+    protected override void CalculateAttributes()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemies);
-
-        if (hits.Length > 0)
-        {
-            target = hits[0].transform;
-        }
-
-
+        // DO NOT USE base.CalculateAttributes if we don't want range to upgrade with flower turret level
+        base.CalculateAttributes();
+        rotationSpeed = CalculateRotationSpeed();
     }
 
-    private bool CheckTargetIsInRange()
+    private float CalculateRotationSpeed()
     {
-        return (Vector2.Distance(target.position, transform.position) <= targetingRange);
+        return rotationSpeedBase * Mathf.Pow(level, rotationUpgradeFactor);
     }
 
-    private void RotateTowardsTarget()
+    protected override void RotateTowardsTarget()
     {
         turretRotationPoint.Rotate(0f, 0f, rotationSpeed * Time.deltaTime, Space.Self);
-    }
-
-    public static void Upgrade()
-    {
-        if (level == maxLevel) return;
-        if (CalculateCost() > LevelManager.Instance.Currency) return;
-
-        LevelManager.Instance.SpendCurrency(CalculateCost());
-
-        level++;
-
-
-        // if num turrets > 0, call onUpgrade (prevents error)
-        CalculateAttributes();
-    }
-
-    public static int CalculateCost()
-    {
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCostFactor));
-    }
-
-    private static int CalculateDamage()
-    {
-        return Mathf.RoundToInt(damageBase * Mathf.Pow(level, damageUpgradeFactor));
-    }
-
-    private static float CalculateBPS()
-    {
-        return bpsBase * Mathf.Pow(level, bpsUpgradeFactor);
-    }
-    private static float CalculateRange()
-    {
-        return targetingRangeBase * Mathf.Pow(level, targetingRangeUpgradeFactor);
-    }
-    private static void CalculateAttributes()
-    {
-        bps = CalculateBPS();
-        targetingRange = CalculateRange();
-        damage = CalculateDamage();
-    }
-
-    private void OnDrawGizmos()
-    {
-        //Handles.color = Color.cyan;
-        //Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
-    }
-
-    private void OnMouseEnter()
-    {
-        CustomCursor.Instance.setCursor(1);
-    }
-
-    private void OnMouseExit()
-    {
-        CustomCursor.Instance.setCursor(0);
     }
 }
 
