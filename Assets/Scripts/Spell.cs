@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Spell : MonoBehaviour
 {
     public GameObject clearSpell;
-    public int costOfSpell = 100;
+    public GameObject freezeSpell;
+
+    public int costOfSpellClearSpell = 100;
+    public int costOfFreezeSpell = 70;
     public int spellCooldown = 1;
     private float cooldown = 1;
     private bool spellReady = true;
 
     private bool buildModeLastFrame = false;
+    [SerializeField]
+    private SpellType spellType = SpellType.Clear;
 
     void Update()
     {
@@ -24,19 +30,55 @@ public class Spell : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1) && spellReady && !buildModeLastFrame)
+        switch((int)spellType)
         {
-            if(LevelManager.Instance.currentMana >= costOfSpell)
+            case(0):
             {
-                Lightning.Instance.Flash();
-                Instantiate(clearSpell, transform.position, transform.rotation);
-                LevelManager.Instance.SpendMana(costOfSpell);
-                cooldown = spellCooldown;
-                spellReady = false;
-            } else {
-                Debug.Log("Not enough mana");
+                if (Input.GetMouseButtonDown(1) && spellReady && !buildModeLastFrame)
+                {
+                    if(LevelManager.Instance.currentMana >= costOfSpellClearSpell)
+                    {
+                        Lightning.Instance.Flash();
+                        Instantiate(clearSpell, transform.position, transform.rotation);
+                        LevelManager.Instance.SpendMana(costOfSpellClearSpell);
+                        cooldown = spellCooldown;
+                        spellReady = false;
+                    } else {
+                        Debug.Log("Not enough mana");
+                    }
+                }
+
+                buildModeLastFrame = GridBuildingSystem.Instance.buildModeEnabled;
+
+                break;
+            }
+
+            case(1):
+            {
+                if (Input.GetMouseButtonDown(1) && spellReady && !buildModeLastFrame)
+                {
+                    if(LevelManager.Instance.currentMana >= costOfFreezeSpell)
+                    {
+                        Lightning.Instance.Flash();
+                        Instantiate(freezeSpell, transform.position, transform.rotation);
+                        LevelManager.Instance.SpendMana(costOfFreezeSpell);
+                        cooldown = spellCooldown;
+                        spellReady = false;
+                    } else {
+                        Debug.Log("Not enough mana");
+                    }
+                }
+
+                buildModeLastFrame = GridBuildingSystem.Instance.buildModeEnabled;
+
+                break;
             }
         }
-        buildModeLastFrame = GridBuildingSystem.Instance.buildModeEnabled;
     }
+}
+
+enum SpellType
+{
+    Clear,
+    Freeze,
 }

@@ -19230,8 +19230,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearSpell: {fileID: 2923622600625958195, guid: c9ab9a0e0350ce9489c5891f7c18cdb4, type: 3}
-  costOfSpell: 300
+  freezeSpell: {fileID: 2923622600625958195, guid: 5e5d60d3a8abbc047a1c6b0e12ffae55, type: 3}
+  costOfSpellClearSpell: 100
+  costOfFreezeSpell: 70
   spellCooldown: 1
+  spellType: 1
 --- !u!1 &1392900189
 GameObject:
   m_ObjectHideFlags: 0

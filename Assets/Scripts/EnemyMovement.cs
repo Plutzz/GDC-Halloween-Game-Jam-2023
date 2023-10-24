@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform target;
     private int pathIndex = 0;
+    private bool frozen = false;
 
     private void Start()
     {
@@ -57,5 +58,23 @@ public class EnemyMovement : MonoBehaviour
 
         Anim.SetFloat("XSpeed", Mathf.Abs(rb.velocity.x));
         Anim.SetFloat("YVelocity", rb.velocity.y);
+    }
+
+    public void Freeze ()
+    {
+        if(!frozen)
+        {
+            StartCoroutine(FreezeTime());
+        }
+    }
+
+    IEnumerator FreezeTime ()
+    {
+        float temp = moveSpeed;
+        moveSpeed = 0;
+        frozen = true;
+        yield return new WaitForSeconds(3f);
+        moveSpeed = temp;
+        frozen = false;
     }
 }
