@@ -24,7 +24,7 @@ public class Flower : BaseTurret
         upgradeCostFactor = 0.8f;
 
         // Bullets Per Second
-        bpsBase = 1f;
+        bpsBase = 5f;
         bpsUpgradeFactor = 0.6f;
 
         // Damage

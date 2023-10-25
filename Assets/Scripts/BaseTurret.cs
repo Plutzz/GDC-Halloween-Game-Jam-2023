@@ -69,11 +69,12 @@ public class BaseTurret : MonoBehaviour
         onUpgrade += CalculateAttributes;
 
         CalculateAttributes();
+
+        animator.SetInteger("level", level);
     }
 
     protected void Update()
-    {
-        animator.SetInteger("level", level);
+    {   
         graphics.GetComponent<SpriteRenderer>().sprite = levelSprites[level - 1];
 
         if (!isActive) return;
@@ -175,6 +176,9 @@ public class BaseTurret : MonoBehaviour
         bps = CalculateBPS();
         targetingRange = CalculateRange();
         damage = CalculateDamage();
+
+        if(animator != null)
+            animator.SetInteger("level", level);
     }
 
     protected virtual void RotateTowardsTarget()
