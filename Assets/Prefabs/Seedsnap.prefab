@@ -717,6 +717,10 @@ MonoBehaviour:
   firingPoint: {fileID: 1586073725}
   rangeDisplay: {fileID: 2569822626739451031}
   graphics: {fileID: 4229200748476971755}
+  levelSprites:
+  - {fileID: -484259977, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
+  - {fileID: 132605874, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
+  - {fileID: -1049350202, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
   animator: {fileID: 2695306193541588242}
   isActive: 0
   timerBar: {fileID: 8174130494291494695}
