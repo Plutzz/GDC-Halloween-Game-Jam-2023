@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Spell : MonoBehaviour
+public class Spell : Singleton<Spell>
 {
     public GameObject clearSpell;
     public GameObject freezeSpell;
@@ -18,6 +18,8 @@ public class Spell : MonoBehaviour
     private bool buildModeLastFrame = false;
     [SerializeField]
     private SpellType spellType = SpellType.Clear;
+
+    SpellType[] spellTypes = (SpellType[])System.Enum.GetValues (typeof(SpellType));
 
     void Update()
     {
@@ -74,6 +76,12 @@ public class Spell : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void ChangeSpell (int type)
+    {
+        spellType = spellTypes[type];
+        Debug.Log(spellType);
     }
 }
 

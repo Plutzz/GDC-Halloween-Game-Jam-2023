@@ -10329,7 +10329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 494, y: 284}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &862834854
@@ -12575,7 +12575,7 @@ GameObject:
   - component: {fileID: 1097769846}
   - component: {fileID: 1097769845}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SelectedSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19234,6 +19234,7 @@ GameObject:
   - component: {fileID: 1429850287}
   - component: {fileID: 1429850286}
   - component: {fileID: 1429850285}
+  - component: {fileID: 1429850289}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -19327,6 +19328,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1429850289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429850284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272545018b4ac5649b9835dbde95c485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 1581603101}
+  selectObject: {fileID: 1680187649}
+  RadialMenuRoot: {fileID: 841195903}
+  isRadialMenuActive: 0
+  selectedSpellName: {fileID: 1097769845}
+  amountOfSpells: 2
+  spellNames:
+  - clear
+  - freeze
 --- !u!1 &1449177282
 GameObject:
   m_ObjectHideFlags: 0
@@ -19517,7 +19539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -33.55, y: 33.973}
+  m_AnchoredPosition: {x: 40.2, y: 35.9}
   m_SizeDelta: {x: 32.899, y: 32.053}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493188590
