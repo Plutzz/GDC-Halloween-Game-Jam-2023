@@ -6,6 +6,6 @@ public class UpgradeButtonSniper : Singleton<UpgradeButton>
 {
     public void UpgradeClick()
     {
-        Sniper.Upgrade();
+        Seedsnap.Upgrade();
     }
 }
