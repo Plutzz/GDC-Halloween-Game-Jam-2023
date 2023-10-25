@@ -529,6 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1887861875454411275}
   - component: {fileID: 4022512732237199612}
+  - component: {fileID: 2695306193541588242}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -603,6 +604,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2695306193541588242
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229200748476971755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25348d263c4d3da4d9c6b32098dc9c18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4473707389639359131
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,9 +636,9 @@ GameObject:
   - component: {fileID: 4473707389639359140}
   - component: {fileID: 4179785240334711445}
   - component: {fileID: 3173246887599490486}
-  - component: {fileID: 6290707649675515644}
+  - component: {fileID: 1469560763195156562}
   m_Layer: 0
-  m_Name: Sniper
+  m_Name: Seedsnap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,7 +697,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &6290707649675515644
+--- !u!114 &1469560763195156562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -684,7 +706,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4473707389639359131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6189350d28e67546806692dfb5555f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bc423aa33335ac468be8d5ca2c16f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationPoint: {fileID: 527339003}
@@ -699,6 +721,7 @@ MonoBehaviour:
   - {fileID: -484259977, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
   - {fileID: 132605874, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
   - {fileID: -1049350202, guid: e27c68e35d14a04469bfcdbce9aafcd6, type: 3}
+  animator: {fileID: 2695306193541588242}
   isActive: 0
   timerBar: {fileID: 8174130494291494695}
 --- !u!1 &6526355511326167452

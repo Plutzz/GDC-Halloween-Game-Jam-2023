@@ -63,15 +63,15 @@ public class Menu : MonoBehaviour
         }
 
         // Cannon (Type Turret)
-        attackSpeedUI[2].text = Sniper.bps.ToString("F2");
-        lifetimeUI[2].text = Sniper.lifetime.ToString();
-        rangeUI[2].text = Sniper.targetingRange.ToString("F2");
-        damageUI[2].text = Sniper.damage.ToString();
-        upgradeCostUI[2].text = Sniper.CalculateCost().ToString();
-        levelUI[2].text = Sniper.level.ToString();
-        levelFillUI[2].fillAmount = Sniper.level / (float)Sniper.maxLevel;
+        attackSpeedUI[2].text = Seedsnap.bps.ToString("F2");
+        lifetimeUI[2].text = Seedsnap.lifetime.ToString();
+        rangeUI[2].text = Seedsnap.targetingRange.ToString("F2");
+        damageUI[2].text = Seedsnap.damage.ToString();
+        upgradeCostUI[2].text = Seedsnap.CalculateCost().ToString();
+        levelUI[2].text = Seedsnap.level.ToString();
+        levelFillUI[2].fillAmount = Seedsnap.level / (float)Seedsnap.maxLevel;
 
-        if (Sniper.CalculateCost() > LevelManager.Instance.Currency)
+        if (Seedsnap.CalculateCost() > LevelManager.Instance.Currency)
         {
             upgradeCostUI[2].color = Color.red;
         }

@@ -7,7 +7,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine.Rendering.Universal;
 
-public class Sniper : BaseTurret
+public class Seedsnap : BaseTurret
 {
     protected override void Start()
     {

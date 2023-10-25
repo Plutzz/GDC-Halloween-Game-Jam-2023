@@ -14,7 +14,11 @@ public class FreezeCircle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyMovement>().Freeze();
+            if(other.gameObject.TryGetComponent<EnemyMovement>(out EnemyMovement enemyMovementScript))
+            {
+                enemyMovementScript.Freeze();
+            }
+            
         }
     }
 }

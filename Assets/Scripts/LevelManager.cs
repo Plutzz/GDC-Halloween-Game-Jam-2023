@@ -20,7 +20,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Start()
     {
-        Currency = 500;
+        Currency = 1000;
         currentMana = maxMana;
     }
 

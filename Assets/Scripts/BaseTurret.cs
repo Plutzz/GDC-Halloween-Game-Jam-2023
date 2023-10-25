@@ -17,6 +17,8 @@ public class BaseTurret : MonoBehaviour
     [SerializeField] protected GameObject graphics;
 
     [SerializeField] protected Sprite[] levelSprites;
+    [SerializeField] protected Animator animator;
+    //[SerializeField] protected Animaton animatons;
 
 
 
@@ -71,6 +73,7 @@ public class BaseTurret : MonoBehaviour
 
     protected void Update()
     {
+        animator.SetInteger("level", level);
         graphics.GetComponent<SpriteRenderer>().sprite = levelSprites[level - 1];
 
         if (!isActive) return;
@@ -125,7 +128,14 @@ public class BaseTurret : MonoBehaviour
         TurretBullet bulletScript = _bullet.GetComponent<TurretBullet>();
         bulletScript.SetDamage(damage);
         bulletScript.SetTarget(target);
+
+        PlayShootingAnimation();
         SoundManager.Instance.PlaySound(SoundManager.Sounds.CannonAttack);
+    }
+
+    protected virtual void PlayShootingAnimation()
+    {
+        animator.Play(0);
     }
 
     public static void Upgrade()
