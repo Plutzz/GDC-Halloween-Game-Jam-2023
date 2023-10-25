@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5420295729461322053}
-  bulletSpeed: 40
+  bulletSpeed: 20
   damage: 10
 --- !u!198 &2205492425810606788
 ParticleSystem:

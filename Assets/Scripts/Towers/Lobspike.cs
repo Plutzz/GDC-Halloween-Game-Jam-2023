@@ -7,7 +7,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine.Rendering.Universal;
 
-public class Cannon : BaseTurret
+public class Lobspike : BaseTurret
 {
     protected override void Start()
     {
@@ -16,13 +16,15 @@ public class Cannon : BaseTurret
         //SET BASE CANNON VALUES
         //---------------------------
 
+       
+
         // Cost
         baseUpgradeCost = 500;
         upgradeCostFactor = 0.8f;
 
         // Bullets Per Second
-        bpsBase = 1f;
-        bpsUpgradeFactor = 0.6f;
+        bpsBase = 2f;
+        bpsUpgradeFactor = 0.3f;
 
         // Damage
         damageBase = 5;
