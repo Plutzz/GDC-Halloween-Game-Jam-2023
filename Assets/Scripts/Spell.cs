@@ -81,7 +81,7 @@ public class Spell : Singleton<Spell>
     public void ChangeSpell (int type)
     {
         spellType = spellTypes[type];
-        Debug.Log(spellType);
+        //Debug.Log(spellType);
     }
 }
 
