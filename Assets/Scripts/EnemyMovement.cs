@@ -9,10 +9,13 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Attribute")]
     [SerializeField] private float moveSpeed = 2f;
+    private float currentMoveSpeed;
 
     public EnemyEndBehavior endBehavior;
     public Animator Anim;
     public float distanceErrorMargin = 0f;
+    public float freezeTime = 3f;
+    private float freezeTimer;
 
     private Transform target;
     private int pathIndex = 0;
@@ -21,10 +24,25 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         target = LevelManager.Instance.path[pathIndex];
+        currentMoveSpeed = moveSpeed;
     }
 
     private void Update()
     {
+        if(frozen)
+        {
+            currentMoveSpeed = 0;
+            freezeTimer -= Time.deltaTime;
+
+            if(freezeTimer <= 0)
+            {
+                frozen = false;
+            }
+        } else if (!frozen)
+        {
+            currentMoveSpeed = moveSpeed;
+        }
+
         //checks distance to next path node
         if (Vector2.Distance(target.position, transform.position) <= distanceErrorMargin)
         {
@@ -54,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
     {
         //Move towards target 
         Vector2 _direction = (target.position - transform.position).normalized;
-        rb.velocity = _direction * moveSpeed;
+        rb.velocity = _direction * currentMoveSpeed;
 
         Anim.SetFloat("XSpeed", Mathf.Abs(rb.velocity.x));
         Anim.SetFloat("YVelocity", rb.velocity.y);
@@ -62,19 +80,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Freeze ()
     {
-        if(!frozen)
-        {
-            StartCoroutine(FreezeTime());
-        }
-    }
-
-    IEnumerator FreezeTime ()
-    {
-        float temp = moveSpeed;
-        moveSpeed = 0;
+        freezeTimer = freezeTime;
         frozen = true;
-        yield return new WaitForSeconds(3f);
-        moveSpeed = temp;
-        frozen = false;
     }
 }
