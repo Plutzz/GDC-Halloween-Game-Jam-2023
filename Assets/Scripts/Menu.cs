@@ -27,15 +27,15 @@ public class Menu : MonoBehaviour
         currencyUI.text = LevelManager.Instance.Currency.ToString();
 
         // Cannon (Type Turret)
-        attackSpeedUI[0].text = Cannon.bps.ToString("F2");
-        lifetimeUI[0].text = Cannon.lifetime.ToString();
-        rangeUI[0].text = Cannon.targetingRange.ToString("F2");
-        damageUI[0].text = Cannon.damage.ToString();
-        upgradeCostUI[0].text = Cannon.CalculateCost().ToString();
-        levelUI[0].text = Cannon.level.ToString();
-        levelFillUI[0].fillAmount = Cannon.level / (float)Cannon.maxLevel;
+        attackSpeedUI[0].text = Lobspike.bps.ToString("F2");
+        lifetimeUI[0].text = Lobspike.lifetime.ToString();
+        rangeUI[0].text = Lobspike.targetingRange.ToString("F2");
+        damageUI[0].text = Lobspike.damage.ToString();
+        upgradeCostUI[0].text = Lobspike.CalculateCost().ToString();
+        levelUI[0].text = Lobspike.level.ToString();
+        levelFillUI[0].fillAmount = Lobspike.level / (float)Lobspike.maxLevel;
 
-        if(Cannon.CalculateCost() > LevelManager.Instance.Currency)
+        if(Lobspike.CalculateCost() > LevelManager.Instance.Currency)
         {
             upgradeCostUI[0].color = Color.red;
         }
@@ -53,7 +53,7 @@ public class Menu : MonoBehaviour
         levelUI[1].text = Flower.level.ToString();
         levelFillUI[1].fillAmount = Flower.level / (float)Flower.maxLevel;
 
-        if (Cannon.CalculateCost() > LevelManager.Instance.Currency)
+        if (Lobspike.CalculateCost() > LevelManager.Instance.Currency)
         {
             upgradeCostUI[1].color = Color.red;
         }

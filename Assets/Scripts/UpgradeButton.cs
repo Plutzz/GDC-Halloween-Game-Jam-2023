@@ -6,6 +6,6 @@ public class UpgradeButton : Singleton<UpgradeButton>
 {
     public void UpgradeClick()
     {
-        Cannon.Upgrade();
+        Lobspike.Upgrade();
     }
 }
