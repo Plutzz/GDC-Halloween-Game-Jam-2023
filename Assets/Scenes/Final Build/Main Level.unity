@@ -762,8 +762,6 @@ MonoBehaviour:
     damage: 0
     lifetime: 0
     rotationSpeed: 0
-    level: 0
-    maxLevel: 0
   targetingRangeBase: 5
   targetingRangeUpgradeFactor: 0.6
   bpsBase: 1
@@ -791,8 +789,6 @@ MonoBehaviour:
     damage: 0
     lifetime: 0
     rotationSpeed: 0
-    level: 0
-    maxLevel: 0
   targetingRangeBase: 5
   targetingRangeUpgradeFactor: 0.6
   bpsBase: 1
