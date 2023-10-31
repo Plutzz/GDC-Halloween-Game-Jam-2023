@@ -21,7 +21,7 @@ public class Menu : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] levelUI;
     [SerializeField] Image[] levelFillUI;
 
-
+    /*
     private void OnGUI()
     {
         currencyUI.text = LevelManager.Instance.Currency.ToString();
@@ -81,5 +81,5 @@ public class Menu : MonoBehaviour
         }
 
     }
-
+    */
 }

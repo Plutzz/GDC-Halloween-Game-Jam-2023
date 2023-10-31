@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeButton : Singleton<UpgradeButton>
+public class UpgradeButtonLobspike : Singleton<UpgradeButtonLobspike>
 {
     public void UpgradeClick()
     {
-        Lobspike.Upgrade();
+        //Lobspike.Upgrade();
     }
 }

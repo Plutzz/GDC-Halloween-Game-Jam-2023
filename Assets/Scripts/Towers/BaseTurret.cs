@@ -15,67 +15,36 @@ public class BaseTurret : MonoBehaviour
     [SerializeField] protected Transform firingPoint;
     [SerializeField] protected GameObject rangeDisplay;
     [SerializeField] protected GameObject graphics;
-
     [SerializeField] protected Sprite[] levelSprites;
-    [SerializeField] protected Animator animator;
-    //[SerializeField] protected Animaton animatons;
+    [SerializeField] protected Animation[] animations;
 
 
 
     // STATS
-    //--------------------------------------------------
-    //Range that turret can target
-    public static float targetingRange { get; private set; }
-    protected static float targetingRangeBase = 5f;
-    protected static float targetingRangeUpgradeFactor = 0.4f;
+    [SerializeField] protected TurretStats stats;
 
-    //Bullets per second
-    public static float bps { get; private set; }
-    protected static float bpsBase = 1f;
-    protected static float bpsUpgradeFactor = 0.6f;
-
-    //Damage Per Bullet
-    public static int damage { get; private set; }
-    protected static int damageBase = 5;
-    protected static float damageUpgradeFactor = 0.3f;
-
-    //Misc Stats
-    public static float lifetime { get; protected set; } = 20f;
-    public static float rotationSpeed { get; protected set; } 
-
-    //Cost variables
-    protected static float upgradeCostFactor = 0.8f;
-    protected static int baseUpgradeCost = 1000;
-
-    public static int level { get; private set; } = 1;
-    public static int maxLevel { get; private set; } = 3;
-
+    protected BaseTurretManager manager;
     protected Transform target;
     protected float timeUntilFire;
-
     protected float timeAlive;
-
-    protected static event Action onUpgrade;
-
     public bool isActive;
     public Image timerBar;
 
-
+    protected virtual void Awake()
+    {
+        isActive = false;
+    }
 
     protected virtual void Start()
     {
-        isActive = false;
-
-        onUpgrade += CalculateAttributes;
-
-        CalculateAttributes();
-
-        animator.SetInteger("level", level);
+        manager = BaseTurretManager.Instance;
+        manager.Upgrade();
+        // Get stats from manager
     }
 
     protected void Update()
     {   
-        graphics.GetComponent<SpriteRenderer>().sprite = levelSprites[level - 1];
+        graphics.GetComponent<SpriteRenderer>().sprite = levelSprites[manager.level - 1];
 
         if (!isActive) return;
 
@@ -83,16 +52,16 @@ public class BaseTurret : MonoBehaviour
         timeAlive += Time.deltaTime;
 
 
-        rangeDisplay.transform.localScale = new Vector3(targetingRange * 2, targetingRange * 2, 1f);
-        rangeDisplay.GetComponent<Light2D>().pointLightOuterRadius = targetingRange;
+        rangeDisplay.transform.localScale = new Vector3(stats.targetingRange * 2, stats.targetingRange * 2, 1f);
+        rangeDisplay.GetComponent<Light2D>().pointLightOuterRadius = stats.targetingRange;
 
-        if (!(lifetime < 0))
+        if (!(stats.lifetime < 0))
         {
-            timerBar.fillAmount = 1 - (timeAlive / lifetime);
+            timerBar.fillAmount = 1 - (timeAlive / stats.lifetime);
         }
 
         // If building has expired destroy building and free up the grid spot
-        if (!(lifetime < 0) && timeAlive > lifetime)
+        if (!(stats.lifetime < 0) && timeAlive > stats.lifetime)
         {
             GridBuildingSystem.Instance.destroyBuilding(GetComponent<Building>());
             Destroy(gameObject);
@@ -105,15 +74,17 @@ public class BaseTurret : MonoBehaviour
         }
 
         RotateTowardsTarget();
-
+        
+        // If target is out of range set target to null
         if (!CheckTargetIsInRange())
         {
             target = null;
         }
+        // If target is in range check if cooldown is done
         else
         {
 
-            if (timeUntilFire >= 1f / bps)
+            if (timeUntilFire >= 1f / stats.bps)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -127,7 +98,7 @@ public class BaseTurret : MonoBehaviour
     {
         GameObject _bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         TurretBullet bulletScript = _bullet.GetComponent<TurretBullet>();
-        bulletScript.SetDamage(damage);
+        bulletScript.SetDamage(stats.damage);
         bulletScript.SetTarget(target);
 
         PlayShootingAnimation();
@@ -136,67 +107,24 @@ public class BaseTurret : MonoBehaviour
 
     protected virtual void PlayShootingAnimation()
     {
-        animator.Play(0);
+        animations[manager.level - 1].Play();
     }
-
-    public static void Upgrade()
-    {
-        if (level == maxLevel) return;
-        if (CalculateCost() > LevelManager.Instance.Currency) return;
-
-        LevelManager.Instance.SpendCurrency(CalculateCost());
-
-        level++;
-
-        onUpgrade();
-    }
-
-    public static int CalculateCost()
-    {
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCostFactor));
-    }
-
-    private static int CalculateDamage()
-    {
-        return Mathf.RoundToInt(damageBase * Mathf.Pow(level, damageUpgradeFactor));
-    }
-
-    private static float CalculateBPS()
-    {
-        return bpsBase * Mathf.Pow(level, bpsUpgradeFactor);
-    }
-    private static float CalculateRange()
-    {
-        return targetingRangeBase * Mathf.Pow(level, targetingRangeUpgradeFactor);
-    }
-
-    // NEED TO MAKE A NEW CALCULATE ATTRIBUTES METHOD IN INHERITED CLASSES
-    protected virtual void CalculateAttributes()
-    {
-        bps = CalculateBPS();
-        targetingRange = CalculateRange();
-        damage = CalculateDamage();
-
-        if(animator != null)
-            animator.SetInteger("level", level);
-    }
-
     protected virtual void RotateTowardsTarget()
     {
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
 
         Quaternion _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
+        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, _targetRotation, stats.rotationSpeed * Time.deltaTime);
     }
 
     private bool CheckTargetIsInRange()
     {
-        return (Vector2.Distance(target.position, transform.position) <= targetingRange);
+        return (Vector2.Distance(target.position, transform.position) <= stats.targetingRange);
     }
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemies);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, stats.targetingRange, (Vector2)transform.position, 0f, enemies);
 
         if (hits.Length > 0)
         {

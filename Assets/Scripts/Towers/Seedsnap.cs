@@ -11,34 +11,15 @@ public class Seedsnap : BaseTurret
 {
     protected override void Start()
     {
-        base.Start();
 
-        //SET BASE CANNON VALUES
-        //---------------------------
+        //base.Start();
 
-        // Cost
-        baseUpgradeCost = 1000;
-        upgradeCostFactor = 0.8f;
 
-        // Bullets Per Second
-        bpsBase = 1f;
-        bpsUpgradeFactor = 0.6f;
+        manager = SeedsnapManager.Instance;
 
-        // Damage
-        damageBase = 5;
-        damageUpgradeFactor = 1;
+        Debug.Log(manager);
 
-        // Range
-        targetingRangeBase = 5f;
-        targetingRangeUpgradeFactor = 0.6f;
-
-        // Other Varibles
-        lifetime = 20;
-        rotationSpeed = 500;
-    }
-    protected static new void CalculateAttributes()
-    {
-        Debug.Log("NEW UPGRADE CALL");
+        manager.Upgrade();
     }
 }
 
