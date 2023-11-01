@@ -1,30 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class EnemyEndBehavior : MonoBehaviour
+public class AlternateEnemyEndBehavior : MonoBehaviour
 {
+
     private Rigidbody2D rb;
     private Renderer sr;
     //public float angle = 0f;
 
     public bool spotted = false;
-    public Vector3 centerOfRotation = new(-15, 5, 0);
-    public GameObject bullet;
     public bool end = false;
     //public float rotationRadius = 2f;
     public float speed = 2f;
-    public float fireRate = 1f;
-    public float fireCooldown = 3f;
+    public float chargeSpeed = 4f;
+    public float tackleRate = 5f;
+    public float tackleCooldown = 0f;
     //public float timeBeforeRotation = 1;
     //public float rotationTimer = 1;
 
     private Transform wayPoint;
-    private int surroundIndex = 0;
+    public int surroundIndex = 0;
+    public bool tackling = false;
 
     void Start ()
     {
+        tackleCooldown = tackleRate;
         wayPoint = LevelManager.Instance.surround[surroundIndex];
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<Renderer>();
@@ -36,13 +37,14 @@ public class EnemyEndBehavior : MonoBehaviour
         {
             //CirclePlayer();
 
-            fireCooldown -= Time.deltaTime;
-            LookAt2D(transform, new Vector2(centerOfRotation.x, centerOfRotation.y));
-
-            if(fireCooldown <= 0)
+            if(tackleCooldown <= 0 && !tackling)
             {
-                Instantiate(bullet, transform.position, transform.localRotation);
-                fireCooldown = fireRate;
+                tackling = true;
+                LookAt2D(transform, new Vector2(PlayerMovement.Instance.transform.position.x, PlayerMovement.Instance.transform.position.y));
+                tackleCooldown = tackleRate;
+            }else if (tackleCooldown <= 0 && tackling)
+            {
+                ChargePlayer();
             }
         
             //checks distance to next path node
@@ -64,64 +66,41 @@ public class EnemyEndBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(end)
+        if(end && !tackling)
         {
             //Move towards target 
             Vector2 _direction = (wayPoint.position - transform.position).normalized;
             rb.velocity = _direction * speed;
+            tackleCooldown -= Time.deltaTime;
+        } else if (tackling)
+        {
+            rb.velocity = Vector2.zero;
         }
+    }
+
+    private void ChargePlayer ()
+    {
+        transform.position += transform.right * chargeSpeed * Time.deltaTime;
     }
 
     public void ReachedEnd()
     {
-        gameObject.layer = LayerMask.NameToLayer("Projectiles");
+        gameObject.layer = LayerMask.NameToLayer("Bullet");
         sr.sortingLayerID = SortingLayer.NameToID("Projectiles");
     }
-
-    // private void CirclePlayer()
-    // {
-
-    //     angle += Time.deltaTime * speed;
-    //     Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
-    //     transform.position = centerOfRotation + direction * rotationRadius;
-    //     LookAt2D(transform, new Vector2(centerOfRotation.x, centerOfRotation.y));
-
-    //     if(angle >= 360f)
-    //     {
-    //         angle = 0f;
-    //     }
-
-    //     if(angle >= 0 && angle <= 180)
-    //     {
-    //         fireCooldown -= Time.deltaTime;
-    //     }
-
-    //     if(fireCooldown <= 0)
-    //     {
-    //         Instantiate(bullet, transform.position, transform.localRotation);
-    //         fireCooldown = fireRate;
-    //     }
-    // }
-
-    // private void SquarePlayer()
-    // {
-    //     transform.position += transform.up * speed * Time.deltaTime;
-    //     Debug.Log("moving right");
-
-    //     rotationTimer -= Time.deltaTime;
-        
-    //     if(rotationTimer <= 0)
-    //     {
-    //         transform.Rotate(new Vector3(0, 0, 90));
-    //         rotationTimer = timeBeforeRotation;
-    //     }
-    // }
-
     private void LookAt2D(Transform transform, Vector2 target)
     {
         Vector2 current = transform.position;
         var direction = target - current;
         var angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    public void SetIndex (int index)
+    {
+        if(tackling)
+        {
+            surroundIndex = index;
+        }
     }
 }

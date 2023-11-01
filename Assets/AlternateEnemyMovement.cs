@@ -2,27 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class AlternateEnemyMovement : EnemyMovement
 {
-    [Header("References")]
-    [SerializeField] protected Rigidbody2D rb;
 
-    [Header("Attribute")]
-    [SerializeField] protected float moveSpeed = 2f;
-    protected float currentMoveSpeed;
-
-    [SerializeField] private EnemyEndBehavior endBehavior;
-    public Animator Anim;
-    public float distanceErrorMargin = 0f;
-    public float freezeTime = 3f;
-    protected float freezeTimer;
-
-    protected Transform target;
-    protected int pathIndex = 0;
-    protected bool frozen = false;
+    [SerializeField] private AlternateEnemyEndBehavior alternateEndBehavior;
 
     private void Start()
     {
+        pathIndex = LevelManager.Instance.path.Length - 2;   
         target = LevelManager.Instance.path[pathIndex];
         currentMoveSpeed = moveSpeed;
     }
@@ -53,8 +40,8 @@ public class EnemyMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 EnemySpawner.onEnemyDestroy.Invoke();
-                endBehavior.ReachedEnd();
-                endBehavior.end = true;
+                alternateEndBehavior.ReachedEnd();
+                alternateEndBehavior.end = true;
                 Destroy(this);
                 return;
             }
@@ -66,21 +53,5 @@ public class EnemyMovement : MonoBehaviour
 
         }
 
-    }
-
-    private void FixedUpdate()
-    {
-        //Move towards target 
-        Vector2 _direction = (target.position - transform.position).normalized;
-        rb.velocity = _direction * currentMoveSpeed;
-
-        Anim.SetFloat("XSpeed", Mathf.Abs(rb.velocity.x));
-        Anim.SetFloat("YVelocity", rb.velocity.y);
-    }
-
-    public void Freeze ()
-    {
-        freezeTimer = freezeTime;
-        frozen = true;
     }
 }
