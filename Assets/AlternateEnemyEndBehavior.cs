@@ -20,8 +20,8 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
     //public float rotationTimer = 1;
 
     private Transform wayPoint;
-    public int surroundIndex = 0;
-    public bool tackling = false;
+    private int surroundIndex = 0;
+    private bool tackling = false;
 
     void Start ()
     {
@@ -41,7 +41,6 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
             {
                 tackling = true;
                 LookAt2D(transform, new Vector2(PlayerMovement.Instance.transform.position.x, PlayerMovement.Instance.transform.position.y));
-                tackleCooldown = tackleRate;
             }else if (tackleCooldown <= 0 && tackling)
             {
                 ChargePlayer();
@@ -57,8 +56,7 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
                 {
                     surroundIndex = 0;
                 }
-                //set target to next node
-                wayPoint = LevelManager.Instance.surround[surroundIndex];
+                SetWayPoint(surroundIndex);
 
             }
         }
@@ -72,6 +70,7 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
             Vector2 _direction = (wayPoint.position - transform.position).normalized;
             rb.velocity = _direction * speed;
             tackleCooldown -= Time.deltaTime;
+            Debug.Log(wayPoint);
         } else if (tackling)
         {
             rb.velocity = Vector2.zero;
@@ -85,7 +84,7 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
 
     public void ReachedEnd()
     {
-        gameObject.layer = LayerMask.NameToLayer("Bullet");
+        gameObject.layer = LayerMask.NameToLayer("Projectiles");
         sr.sortingLayerID = SortingLayer.NameToID("Projectiles");
     }
     private void LookAt2D(Transform transform, Vector2 target)
@@ -102,5 +101,25 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
         {
             surroundIndex = index;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerHealth>().takeDamage(10);
+        }
+    }
+
+    public void ResetCooldown()
+    {
+        tackleCooldown = tackleRate;
+        tackling = false;
+    }
+
+    public void SetWayPoint(int index)
+    {
+        //set target to next node
+        wayPoint = LevelManager.Instance.surround[index];
+        surroundIndex = index;
     }
 }
