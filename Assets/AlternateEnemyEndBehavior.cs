@@ -15,7 +15,7 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
     public float speed = 2f;
     public float chargeSpeed = 4f;
     public float tackleRate = 5f;
-    public float tackleCooldown = 0f;
+    [SerializeField]private float tackleCooldown = 0f;
     //public float timeBeforeRotation = 1;
     //public float rotationTimer = 1;
 
@@ -70,7 +70,6 @@ public class AlternateEnemyEndBehavior : MonoBehaviour
             Vector2 _direction = (wayPoint.position - transform.position).normalized;
             rb.velocity = _direction * speed;
             tackleCooldown -= Time.deltaTime;
-            Debug.Log(wayPoint);
         } else if (tackling)
         {
             rb.velocity = Vector2.zero;
